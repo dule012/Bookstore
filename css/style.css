@@ -66,12 +66,13 @@ p:nth-child(3) {
     margin-top: 5%;
     border: 1px solid white;
     overflow: auto;
-    height: 60%;
+    height: 58%;
     width: 95%;
+    overflow: auto;
 }
 
 header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 19%;
     width: 56%;
@@ -116,6 +117,7 @@ header input {
     border: none;
     border-bottom: 1px solid #e1e7e5;
     padding-bottom: 0.2%;
+    font-size: 1.1vw;
 }
 
 i.fa-search {
@@ -157,7 +159,7 @@ i.fa-search {
 }
 
 .cart-and-login {
-    position: absolute;
+    position: fixed;
     top: 22%;
     left: 79%;
     width: 21%;
@@ -209,9 +211,74 @@ i.fa-search {
 }
 
 .comments {
-    position: absolute;
+    position: fixed;
     top: 28%;
     left: 79%;
     width: 21%;
     height: 72%;
+    padding-top: 1.2%;
+    background-color: #ddddda;
+}
+
+.discussion {
+    text-transform: uppercase;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #d3d3d0;
+    color: #a6a6a3;
+    margin-left: 5%;
+}
+
+.display-comments {
+    margin-top: 5%;
+    height: 80%;
+    overflow: auto;
+    margin-left: 5%;
+}
+
+.comment-card {
+    margin-bottom: 5%;
+    padding-left: 1.8%;
+    overflow: hidden;
+}
+
+.comment-card img {
+    width: 10%;
+    height: 30%;
+    float: left;
+}
+
+.comment-card p {
+    float: left;
+    margin-left: 3%;
+    width: 85%;
+    line-height: 1.1vw;
+    word-wrap: break-word;
+    font-size: 1vw;
+}
+
+.leaving-comments {
+    position: relative;
+    height: 11%;
+    background-color: #5c5c5a;
+}
+.leaving-comments img {
+    width: 10%;
+    height: 55%;
+    position: absolute;
+    top: 50%;
+    left: 13%;
+    transform: translate(0,-50%);
+} 
+
+.leaving-comments input {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 26%;
+    transform: translate(0,-50%);
+    border: none;
+    border-bottom: 1px solid #797977;
+    background-color: #5c5c5a;
+    color: white;
+    font-size: 1.1vw;
 }
