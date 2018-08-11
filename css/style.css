@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.b {
+    width: 14%;
+    height: 14%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #55ac98;
+}
+
+.b p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.info {
+    position: fixed;
+    top: 14%;
+    left: 0;
+    width: 14%;
+    height: 86%;
+    background-color: #15150f;
+    padding-top: 2%;
+    padding-left: 1.5%;
+}
+
+.info p {
+    color: #33332f;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.info ul {
+    margin-top: 5%;
+    list-style-type: none;
+}
+.info ul li {
+    padding: 2% 3%;
+    color: white;
+    font-weight: bold;
+}
+
+#white {
+    background-color: white;
+    color: black;
+}
+ p:nth-child(3) {
+    margin-top: 20%;
+}
+
+.bookmarks {
+    margin-top: 5%;
+    border: 1px solid white;
+    overflow: auto;
+    height: 60%;
+}
