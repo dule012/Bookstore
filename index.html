@@ -65,6 +65,32 @@
                 <p class="book-title-grid">The Flaneur</p>
                 <p class="book-author-grid">Keith Tester</p>
             </a>
+            <div class="price-wrapper">
+                <p class="book-price-grid">$24.69</p>
+                <p class="book-cart-grid">+
+                    <i class="fa fa-shopping-cart"></i>
+                </p>
+            </div>
+            <div class="book-card-info">
+                <p class="book-info-title">
+                    <a href="bookInfo.html">The Flaneur</a>
+                </p>
+                <p class="book-info-author">Keith Tester</p>
+                <p class="book-info-pages">352 pages</p>
+                <p class="book-info-summary">summary</p>
+                <p class="book-info-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus aliquam corrupti culpa ipsam minus in
+                    beatae vitae omnis eaque eum eligendi maxime nesciunt autem reprehenderit, temporibus recusandae ex reiciendis
+                    optio.
+                </p>
+                <div class="star-wrapper">
+                    <p class="book-info-rating">rating</p>
+                    <i class="fa fa-star one"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
         </div>
         <div class="book-card-grid">
             <img src="./content.jpeg" alt="cardImage">
@@ -181,8 +207,8 @@
 
     <div class="cart-and-login">
         <div class="cart">
-            <p>Bag</p>
-            <img src="./bag-icon.png" alt="bag-icon">
+            <p>Cart</p>
+            <i class="fa fa-shopping-cart"></i>
         </div>
         <div class="login">
             <p>Login</p>
@@ -210,7 +236,473 @@
             <input type="text" name="commenting" placeholder="Share your thoughts     &#xf0e5;" style="font-family:Arial, FontAwesome">
         </div>
     </div>
-
+    <div class="login-wrapper">
+        <p>Loigin</p>
+        <input type="text" name="username"  placeholder="Enter your username">
+        <input type="password" name="password" placeholder="Enter your password">
+        
+    </div>
 </body>
 
 </html>
+<!-- * { <===================================== Izrazeno u vw width last-viewed, cart-and-login, comments
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.b {
+    width: 14.7vw;
+    height: 14vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('../writing.jpeg');
+    background-size: cover;
+}
+
+
+/* .b p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 2vw;
+    opacity: 0;
+} */
+
+.info {
+    position: absolute;
+    top: 14vh;
+    left: 0;
+    width: 14.7vw;
+    height: 86vh;
+    background-color: #15150f;
+    padding-top: 6vh;
+    padding-left: 1.5vw;
+}
+
+.info p {
+    color: #33332f;
+    text-transform: uppercase;
+    font-size: 0.9vw;
+}
+
+.info ul {
+    margin-top: 1vw;
+    list-style-type: none;
+}
+
+.info ul li {
+    padding: 1vh 0.6vw;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1vw;
+}
+
+#white {
+    background-color: white;
+    color: black;
+}
+
+#titleBookmarks {
+    margin-top: 5vh;
+}
+
+.bookmarks-wrapper {
+    margin-top: 1.7vh;
+    border: 1px solid white;
+    overflow: auto;
+    height: 15vw;
+    width: 12.5vw;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.bookmarks-card {
+    margin: 0.6vw 0;
+}
+
+.bookmarks-card a {
+    display: block;
+    text-decoration: none;
+}
+
+p.bookmarks-title {
+    color: #a0a09d;
+    font-size: 0.8vw;
+}
+
+p.bookmarks-author {
+    color: #5c5c57;
+    font-size: 0.7vw;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 18.5vw;
+    width: 55.9vw;
+    height: 14vh;
+    border: 1px solid black;
+    z-index: 2;
+    background-color: #5c5c5a;
+}
+
+header p {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    font-size: 2vw;
+    color: white;
+}
+
+i {
+    cursor: pointer;
+    color: white;
+}
+
+i.list {
+    position: absolute;
+    top: 50%;
+    left: 24vw;
+    transform: translate(0, -50%);
+    font-size: 1.4vw;
+}
+
+i.grid {
+    position: absolute;
+    top: 50%;
+    left: 26vw;
+    transform: translate(0, -50%);
+    font-size: 1.4vw;
+}
+
+header input {
+    position: absolute;
+    top: 50%;
+    left: 34.6vw;
+    width: 18.8vw;
+    transform: translate(0, -50%);
+    border: none;
+    border-bottom: 1px solid #e1e7e5;
+    padding-bottom: 0.2%;
+    font-size: 1.1vw;
+    background-color: #5c5c5a;
+    color: white;
+}
+
+i.fa-search {
+    position: absolute;
+    top: 50%;
+    left: 53.7vw;
+    transform: translate(0, -50%);
+    font-size: 1.4vw;
+    color: #e1e7e5;
+}
+
+.container {
+    position: absolute;
+    top: 14vh;
+    left: 18.5vw;
+    width: 55.9vw;
+    border: 1px solid black;
+    overflow: hidden;
+    padding-top: 2%;
+}
+
+/* .book-card-grid {
+    float: left;
+    width: 15%;
+    height: 16vw;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    border: 1px solid black;
+} */
+
+div.book-card-grid:nth-child(4n - 3) {
+    float: left;
+    width: 8.3vw;
+    height: 16vw;
+    margin-bottom: 5vh;
+}
+
+div.book-card-grid:nth-child(4n+2) {
+    float: left;
+    width: 8.3vw;
+    height: 16vw;
+    margin-bottom: 5vh;
+    margin-left: 7.4vw;
+    margin-right: 7.4vw;
+}
+
+div.book-card-grid:nth-child(4n - 1) {
+    float: left;
+    width: 8.3vw;
+    height: 16vw;
+    margin-right: 7.4vw;
+}
+
+div.book-card-grid:nth-child(4n) {
+    float: left;
+    width: 8.3vw;
+    height: 16vw;
+    margin-bottom: 5vh;
+}
+
+.book-card-grid img {
+    display: block;
+    width: 100%;
+    height: 82%;
+}
+
+.book-card-grid a {
+    display: block;
+    text-decoration: none;
+}
+
+.book-title-grid {
+    font-size: 1vw;
+    color: rgb(66, 182, 221);
+    font-weight: bold;
+    margin-left: 3%;
+    word-wrap: break-word;
+    font-size: 1.1vw;
+}
+
+.book-author-grid {
+    margin-top: -2%;
+    margin-left: 6%;
+    font-size: 0.8vw;
+    color: #7c817f;
+    word-wrap: break-word;
+}
+
+.book-card-list {
+    width: 100%;
+    height: 13vw;
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 6vw;
+}
+
+.book-card-list img {
+    height: 100%;
+    width: 15%;
+    float: left;
+}
+
+.book-card-list a {
+    display: block;
+}
+
+.book-title-list,
+.book-author-list,
+.book-description-list {
+    float: left;
+    width: 85%;
+    text-align: center;
+}
+
+.book-title-list {
+    font-weight: bold;
+    font-size: 1.3vw;
+    color: rgb(66, 182, 221);
+}
+
+.book-author-list {
+    color: rgb(66, 182, 221);
+    font-size: 1vw;
+    color: #7c817f;
+}
+
+.book-description-list {
+    font-size: 1vw;
+    margin-top: 4.2vw;
+    word-wrap: break-word;
+}
+
+.last-viewed {
+    position: fixed;
+    top: 0;
+    left: 78vw;
+    width: 20.7vw;
+    height: 10.2vw;
+    background-color: #5c5c5a;
+    padding-top: 2vw;
+    padding-left: 1.4vw;
+}
+
+.last-viewed p {
+    color: #80807e;
+    font-size: 1.2vw;
+    position: absolute;
+    top: 1vw;
+}
+
+.last-viewed a {
+    position: absolute;
+    top: 4vw;
+    left: 1.6vw;
+    transform: translate(0, -50%);
+    /* display: block; */
+    width: 19vw;
+    /* margin-top: 2.5%; */
+    color: #cecec3;
+    font-size: 1.7vw;
+    /* padding-left: 3%; */
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.last-viewed a i {
+    font-size: 1.3vw;
+    color: #cecec3;
+}
+
+.cart-and-login {
+    position: fixed;
+    top: 10.2vw;
+    left: 78vw;
+    width: 20.7vw;
+    height: 2.8vw;
+    background-color: #484843;
+}
+
+.cart {
+    position: absolute;
+    top: 50%;
+    left: 3vw;
+    transform: translate(0, -50%);
+    padding: 0.1vw 0.6vw;
+    background-color: #bdbdb5;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 5vw;
+    height: 2.2vw;
+}
+
+.cart p {
+    display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2vw;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.cart img {
+    position: absolute;
+    right: 0.3vw;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 1.2vw;
+    height: 1.5vw;
+    margin-left: 1%;
+}
+
+.login {
+    position: absolute;
+    top: 50%;
+    left: 13vw;
+    transform: translate(0, -50%);
+    background-color: #bdbdb5;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 5vw;
+    height: 2.2vw;
+}
+
+.login p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2vw;
+    color: white;
+    font-weight: bold;
+}
+
+.comments {
+    position: fixed;
+    top: 13vw;
+    left: 78vw;
+    width: 20..7vw;
+    height: 33.1vw;
+    padding-top: 1.3vw;
+    background-color: #ddddda;
+}
+
+.discussion {
+    text-transform: uppercase;
+    padding-bottom: 0.5vw;
+    border-bottom: 1px solid #d3d3d0;
+    color: #a6a6a3;
+    margin-left: 1.2vw;
+    font-size: 1.2vw;
+    height: 1.8vw;
+}
+
+.display-comments {
+    margin-top: 1.3vw;
+    height: 25vw;
+    overflow: auto;
+    margin-left: 1.3vw;
+}
+
+.comment-card {
+    margin-bottom: 1vw;
+    padding-left: 0.2vw;
+    overflow: hidden;
+}
+
+.comment-card img {
+    width: 2vw;
+    height: 2vw;
+    float: left;
+}
+
+.comment-card p {
+    float: left;
+    margin-left: 0.6vw;
+    width: 16.6vw;
+    line-height: 1.1vw;
+    word-wrap: break-word;
+    font-size: 1vw;
+}
+
+.leaving-comments {
+    position: absolute;
+    bottom: 0;
+    width: 20.7vw;
+    height: 3vw;
+    background-color: #5c5c5a;
+}
+
+.leaving-comments img {
+    width: 2vw;
+    height: 2.2vw;
+    position: absolute;
+    top: 50%;
+    left: 3vw;
+    transform: translate(0, -50%);
+}
+
+.leaving-comments input {
+    width: 13vw;
+    position: absolute;
+    top: 50%;
+    left: 5.3vw;
+    transform: translate(0, -50%);
+    border: none;
+    border-bottom: 1px solid #797977;
+    background-color: #5c5c5a;
+    color: white;
+    font-size: 1.1vw;
+} <==================================== Izrazeno u vw width last-viewed, cart-and-login, comments
+ -->

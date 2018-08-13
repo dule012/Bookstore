@@ -5,9 +5,34 @@
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+body {
+    position: relative;
+}
+
 .b {
-    width: 15%;
-    height: 14%;
+    width: 14.7vw;
+    height: 14vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('../writing.jpeg');
+    background-size: cover;
+}
+
+/* .b p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+    font-size: 2vw;
+    opacity: 0;
+} */
+
+.b {
+    width: 14.7vw;
+    height: 14vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -27,14 +52,7 @@
 } */
 
 .info {
-    position: fixed;
-    top: 14%;
-    left: 0;
-    width: 15%;
-    height: 86%;
-    background-color: #15150f;
-    padding-top: 2%;
-    padding-left: 1.5%;
+    display: none;
 }
 
 .info p {
@@ -44,12 +62,12 @@
 }
 
 .info ul {
-    margin-top: 5%;
+    margin-top: 1vw;
     list-style-type: none;
 }
 
 .info ul li {
-    padding: 2% 3%;
+    padding: 1vh 0.6vw;
     color: white;
     font-weight: bold;
     font-size: 1.1vw;
@@ -61,15 +79,15 @@
 }
 
 #titleBookmarks {
-    margin-top: 20%;
+    margin-top: 5vh;
 }
 
 .bookmarks-wrapper {
-    margin-top: 5%;
+    margin-top: 1.7vh;
     border: 1px solid white;
     overflow: auto;
-    height: 58%;
-    width: 95%;
+    height: 15vw;
+    width: 12.5vw;
     overflow: auto;
     word-wrap: break-word;
 }
@@ -96,21 +114,17 @@ p.bookmarks-author {
 header {
     position: fixed;
     top: 0;
-    left: 19%;
-    width: 56%;
-    height: 14%;
+    width: 100%;
     border: 1px solid black;
     z-index: 2;
-    background-color: #5c5c5a;
+    background-color: lightblue;
 }
 
 header p {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    font-size: 2vw;
+    display: inline-block;
+    font-size: 7vw;
     color: white;
+    margin-top: 1%;
 }
 
 i {
@@ -119,49 +133,38 @@ i {
 }
 
 i.list {
-    position: absolute;
-    top: 50%;
-    left: 45%;
-    transform: translate(0, -50%);
-    font-size: 1.4vw;
+    margin-left: 55%;
+    font-size: 3vw;
 }
 
 i.grid {
-    position: absolute;
-    top: 50%;
-    left: 48%;
-    transform: translate(0, -50%);
-    font-size: 1.4vw;
+    font-size: 3vw;
+    margin-left: 1%;
 }
 
 header input {
-    position: absolute;
-    top: 50%;
-    left: 63%;
-    width: 34%;
-    transform: translate(0, -50%);
+    display: inline-block;
+    margin-left: 10%;
+    width: 72%;
+    transform: translate(0, -5px);
     border: none;
     border-bottom: 1px solid #e1e7e5;
-    padding-bottom: 0.2%;
-    font-size: 1.1vw;
-    background-color: #5c5c5a;
+    background-color: lightblue;
+    font-size: 4vw;
     color: white;
 }
 
 i.fa-search {
-    position: absolute;
-    top: 50%;
-    left: 97.3%;
-    transform: translate(0, -50%);
-    font-size: 1.4vw;
+    font-size: 4vw;
     color: #e1e7e5;
+    transform: translate(0, -5px);
 }
 
 .container {
     position: absolute;
-    top: 14%;
-    left: 19%;
-    width: 56%;
+    top: 14vh;
+    left: 18.5vw;
+    width: 55.9vw;
     border: 1px solid black;
     overflow: hidden;
     padding-top: 2%;
@@ -177,33 +180,23 @@ i.fa-search {
 } */
 
 div.book-card-grid:nth-child(4n - 3) {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-bottom: 5%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 div.book-card-grid:nth-child(4n+2) {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-bottom: 5%;
-    margin-left: 13.3%;
-    margin-right: 13.3%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 div.book-card-grid:nth-child(4n - 1) {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-right: 13.3%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 div.book-card-grid:nth-child(4n) {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-bottom: 5%;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .book-card-grid img {
@@ -213,8 +206,7 @@ div.book-card-grid:nth-child(4n) {
 }
 
 .book-card-grid a {
-    display: block;
-    text-decoration: none;
+F    text-decoration: none;
 }
 
 .book-title-grid {
@@ -223,13 +215,13 @@ div.book-card-grid:nth-child(4n) {
     font-weight: bold;
     margin-left: 3%;
     word-wrap: break-word;
-    font-size: 1.1vw;
+    font-size: 2.5vw;
 }
 
 .book-author-grid {
     margin-top: -2%;
     margin-left: 6%;
-    font-size: 0.8vw;
+    font-size: 1.8vw;
     color: #7c817f;
     word-wrap: break-word;
 }
@@ -285,30 +277,30 @@ div.book-card-grid:nth-child(4n) {
     width: 21%;
     height: 22%;
     background-color: #5c5c5a;
-    padding-top: 1.7%;
+    padding-top: 3vh;
     padding-left: 1.5%;
 }
 
 .last-viewed p {
     color: #80807e;
     font-size: 1.2vw;
-    position: absolute;
-    top: 20%;
+    /* position: absolute;
+    top: 10%; */
 }
 
 .last-viewed a {
     position: absolute;
-    top: 50%;
-    left: 8%;
+    top: 40%;
+    left: 10%;
     transform: translate(0, -50%);
-    /* display: block; */
-    width: 95%;
-    /* margin-top: 2.5%; */
+    width: 89%;
     color: #cecec3;
     font-size: 1.7vw;
-    /* padding-left: 3%; */
     text-decoration: none;
     word-wrap: break-word;
+    /* margin-top: 2.5%; */
+    /* padding-left: 3%; */
+    /* display: block; */
 }
 
 .last-viewed a i {
@@ -321,21 +313,21 @@ div.book-card-grid:nth-child(4n) {
     top: 22%;
     left: 79%;
     width: 21%;
-    height: 6%;
+    height: 4%;
     background-color: #484843;
 }
 
 .cart {
     position: absolute;
     top: 50%;
-    left: 15%;
+    left: 3vw;
     transform: translate(0, -50%);
-    padding: 1% 2%;
+    padding: 0.1vw 0.6vw;
     background-color: #bdbdb5;
     border-radius: 5px;
     cursor: pointer;
-    width: 25%;
-    height: 80%;
+    width: 5vw;
+    height: 2.2vw;
 }
 
 .cart p {
@@ -361,13 +353,13 @@ div.book-card-grid:nth-child(4n) {
 .login {
     position: absolute;
     top: 50%;
-    left: 60%;
+    left: 13vw;
     transform: translate(0, -50%);
     background-color: #bdbdb5;
     border-radius: 5px;
     cursor: pointer;
-    width: 25%;
-    height: 80%;
+    width: 5vw;
+    height: 2.2vw;
 }
 
 .login p {
@@ -382,55 +374,57 @@ div.book-card-grid:nth-child(4n) {
 
 .comments {
     position: fixed;
-    top: 28%;
+    top: 26%;
     left: 79%;
     width: 21%;
-    height: 72%;
-    padding-top: 1.2%;
+    height: 74%;
+    padding-top: 1.3vw;
     background-color: #ddddda;
 }
 
 .discussion {
     text-transform: uppercase;
-    padding-bottom: 1%;
+    padding-bottom: 0.5vw;
     border-bottom: 1px solid #d3d3d0;
     color: #a6a6a3;
     margin-left: 1.2vw;
     font-size: 1.2vw;
-    height: 6%;
+    height: 1.8vw;
 }
 
 .display-comments {
     margin-top: 1.3vw;
-    height: 80%;
+    height: 25vw;
     overflow: auto;
     margin-left: 1.3vw;
 }
 
 .comment-card {
-    margin-bottom: 5%;
-    padding-left: 1.8%;
+    margin-bottom: 1vw;
+    padding-left: 0.2vw;
     overflow: hidden;
 }
 
 .comment-card img {
-    width: 10%;
-    height: 30%;
+    width: 2vw;
+    height: 2vw;
     float: left;
 }
 
 .comment-card p {
     float: left;
-    margin-left: 3%;
-    width: 85%;
+    margin-left: 0.6vw;
+    width: 16.6vw;
     line-height: 1.1vw;
     word-wrap: break-word;
     font-size: 1vw;
 }
 
 .leaving-comments {
-    position: relative;
-    height: 11%;
+    position: absolute;
+    bottom: 0;
+    width: 20.7vw;
+    height: 3vw;
     background-color: #5c5c5a;
 }
 
@@ -454,4 +448,405 @@ div.book-card-grid:nth-child(4n) {
     background-color: #5c5c5a;
     color: white;
     font-size: 1.1vw;
+}
+
+/*================================================(MIN-WIDTH: 992PX)=============================================================*/
+
+@media screen and (min-width: 992px) {
+    .info {
+        display: block;
+        position: absolute;
+        top: 14vh;
+        left: 0;
+        width: 14.7vw;
+        height: 86vh;
+        background-color: #15150f;
+        padding-top: 6vh;
+        padding-left: 1.5vw;
+    }
+    .info p {
+        font-size: 0.9vw;
+    }
+    .info ul {
+        margin-top: 1vw;
+    }
+    .info ul li {
+        padding: 1vh 0.6vw;
+        font-size: 1.1vw;
+    }
+    #titleBookmarks {
+        margin-top: 5vh;
+    }
+    .bookmarks-wrapper {
+        margin-top: 1.7vh;
+        border: 1px solid yellow;
+        height: 70%;
+        width: 12.5vw;
+    }
+    .bookmarks-card {
+        margin: 0.6vw 0;
+    }
+    p.bookmarks-title {
+        font-size: 0.8vw;
+    }
+    p.bookmarks-author {
+        font-size: 0.7vw;
+    }
+    header {
+        position: fixed;
+        top: 0;
+        left: 18.5vw;
+        width: 55.9vw;
+        height: 14vh;
+        /* padding: 2vh 0; */
+        border: 1px solid black;
+        background-color: #5c5c5a;
+    }
+    header p {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        font-size: 36px;
+        margin-top: 0%;
+        /* margin-bottom: 3%; */
+    }
+    i.list {
+        position: absolute;
+        top: 50%;
+        left: 44%;
+        margin-left: 0;
+        transform: translate(0, -50%);
+        font-size: 1.4vw;
+    }
+    i.grid {
+        position: absolute;
+        top: 50%;
+        left: 48%;
+        margin-left: 0;
+        transform: translate(0, -50%);
+        font-size: 1.4vw;
+    }
+    header input {
+        position: absolute;
+        top: 50%;
+        left: 53%;
+        transform: translate(0, -50%);
+        width: 18.8vw;
+        padding-bottom: 0.2%;
+        font-size: 1.1vw;
+        border-bottom: 1px solid #e1e7e5;
+        background-color: #5c5c5a;
+    }
+    i.fa-search {
+        position: absolute;
+        top: 50%;
+        left: 97%;
+        transform: translate(0, -50%);
+        font-size: 1.4vw;
+        margin-left: 0;
+    }
+    .container {
+        position: absolute;
+        top: 14vh;
+        left: 18.5vw;
+        width: 55.9vw;
+        padding-top: 2%;
+    }
+    /* .book-card-grid {
+    float: left;
+    width: 15%;
+    height: 16vw;
+    margin-bottom: 5%;
+    margin-right: 10%;
+    border: 1px solid black;
+} */
+    div.book-card-grid:nth-child(4n - 3) {
+        float: left;
+        width: 8.3vw;
+        height: 16vw;
+        margin-bottom: 5vh;
+        margin-left: 0;
+        position: relative;
+    }
+    .book-card-info {
+        position: absolute;
+        top: 0;
+        left: 120%;
+        width: 220%;
+        color: white;
+        background-color: black;
+        opacity: 0.8;
+        padding: 20%;
+        font-size: 0.9vw;
+    }
+    .book-card-info::before {
+        content: " ";
+        position: absolute;
+        top: 10px;
+        left: -10px;
+        width: 0;
+        height: 0;
+        z-index: 2;
+        border-top: 10px solid transparent;
+        border-right: 10px solid black;
+        border-bottom: 10px solid transparent;
+    }
+    .book-info-title {
+        font-weight: bold;
+        color: #e9c95a;
+        text-transform: uppercase;
+    }
+    .book-info-author {
+        color: #4c5b6c;
+    }
+    .book-info-summary {
+        text-transform: uppercase;
+        color: #4d5561;
+        margin-top: 6%;
+    }
+    .book-info-rating {
+        text-transform: uppercase;
+        color: #4c5b6c;
+        margin-top: 6%;
+    }
+    .star-wrapper i:nth-of-type(1),
+    .star-wrapper i:nth-of-type(2),
+    .star-wrapper i:nth-of-type(3) {
+        color: yellow;
+        cursor: none;
+    }
+    .price-wrapper {
+        width: inherit;
+        padding: 1.2%;
+        overflow: hidden;
+    }
+    .book-price-grid {
+        float: left;
+        font-size: 1vw;
+    }
+    .book-cart-grid {
+        float: right;
+        font-size: 1.4vw;
+        margin-top: -2%;
+    }
+    .book-cart-grid i {
+        color: black;
+        font-size: 1.4vw;
+    }
+    div.book-card-grid:nth-child(4n+2) {
+        float: left;
+        width: 8.3vw;
+        height: 16vw;
+        margin-bottom: 5vh;
+        margin-left: 7.4vw;
+        margin-right: 7.4vw;
+    }
+    div.book-card-grid:nth-child(4n - 1) {
+        float: left;
+        width: 8.3vw;
+        height: 16vw;
+        margin-right: 7.4vw;
+        margin-left: 0;
+    }
+    div.book-card-grid:nth-child(4n) {
+        float: left;
+        width: 8.3vw;
+        height: 16vw;
+        margin-bottom: 5vh;
+        margin-left: 0;
+    }
+    .book-card-grid img {
+        width: 100%;
+        height: 82%;
+    }
+    .book-title-grid {
+        font-size: 1vw;
+        margin-left: 3%;
+        font-size: 1.1vw;
+    }
+    .book-author-grid {
+        margin-top: -2%;
+        margin-left: 6%;
+        font-size: 0.8vw;
+    }
+    .book-card-list {
+        width: 100%;
+        height: 13vw;
+        margin-bottom: 6vw;
+    }
+    .book-card-list img {
+        height: 100%;
+        width: 15%;
+    }
+    .book-title-list,
+    .book-author-list,
+    .book-description-list {
+        width: 85%;
+    }
+    .book-title-list {
+        font-size: 1.3vw;
+    }
+    .book-author-list {
+        font-size: 1vw;
+    }
+    .book-description-list {
+        font-size: 1vw;
+        margin-top: 4.2vw;
+    }
+    .last-viewed {
+        position: fixed;
+        top: 0;
+        left: 79%;
+        width: 21%;
+        height: 22%;
+        padding-top: 3vh;
+        padding-left: 1.5%;
+    }
+    .last-viewed p {
+        font-size: 1.2vw;
+        position: absolute;
+        top: 7%;
+    }
+    .last-viewed a {
+        position: absolute;
+        top: 25%;
+        left: 5%;
+        width: 89%;
+        height: 70%;
+        transform: translate(0, 0);
+        font-size: calc(1.2vw + 1.2vh);
+        border: 1px solid white;
+        overflow: auto;
+        line-height: calc(1.2vw + 1.2vh);
+        /* margin-top: 2.5%; */
+        /* padding-left: 3%; */
+        /* display: block; */
+    }
+    .last-viewed a i {
+        font-size: calc(1.2vw + 1.2vh)
+    }
+    .cart-and-login {
+        position: fixed;
+        top: 22%;
+        left: 79%;
+        width: 21%;
+        height: 6%;
+    }
+    .cart {
+        position: absolute;
+        top: 50%;
+        left: 3vw;
+        transform: translate(0, -50%);
+        padding: 0.1vw 0.6vw;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 5vw;
+        height: 2.2vw;
+    }
+    .cart p {
+        display: block;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2vw;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    .cart i {
+        position: absolute;
+        right: 0.3vw;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 1.2vw;
+        height: 1.5vw;
+        margin-left: 1%;
+    }
+    .login {
+        position: absolute;
+        top: 50%;
+        left: 13vw;
+        transform: translate(0, -50%);
+        background-color: #bdbdb5;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 5vw;
+        height: 2.2vw;
+    }
+    .login p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.2vw;
+        color: white;
+        font-weight: bold;
+    }
+    .comments {
+        position: fixed;
+        top: 28%;
+        left: 79%;
+        width: 21%;
+        max-height: 72%;
+        padding-top: 1.3vw;
+        background-color: #ddddda;
+    }
+    .discussion {
+        text-transform: uppercase;
+        padding-bottom: 0.5vw;
+        border-bottom: 1px solid #d3d3d0;
+        color: #a6a6a3;
+        margin-left: 1.2vw;
+        font-size: 1.2vw;
+        height: 1.8vw;
+    }
+    .display-comments {
+        margin-top: 1.3vw;
+        height: 70%;
+        overflow: auto;
+        margin-left: 1.3vw;
+        border: 1px solid black;
+    }
+    .comment-card {
+        margin-bottom: 1vw;
+        padding-left: 0.2vw;
+        overflow: hidden;
+    }
+    .comment-card img {
+        border: 1px solid black;
+        width: 2vw;
+        height: 2vw;
+        float: left;
+    }
+    .comment-card p {
+        border: 1px solid black;
+        float: left;
+        margin-left: 0.4vw;
+        width: 16.6vw;
+        line-height: calc(0.8vw + 0.9vh);
+        word-wrap: break-word;
+        font-size: calc(0.7vw + 0.5vh);
+    }
+    .leaving-comments {
+        position: absolute;
+        bottom: 0;
+        width: 20.7vw;
+        height: 3vw;
+        background-color: #5c5c5a;
+    }
+    .leaving-comments img {
+        width: 2vw;
+        height: 2.2vw;
+        position: absolute;
+        top: 50%;
+        left: 3vw;
+        transform: translate(0, -50%);
+    }
+    .leaving-comments input {
+        width: 13vw;
+        position: absolute;
+        top: 50%;
+        left: 5.3vw;
+        transform: translate(0, -50%);
+        font-size: 1.1vw;
+    }
 }
