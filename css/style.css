@@ -20,12 +20,22 @@ body {
 
 .info {
     display: none;
+    position: absolute;
+    top: calc(29vw + 4vh);
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 70vw;
+    height: calc(90vw + 12vh);
+    background-color: black;
+    z-index: 3;
+    padding-top: 2vw;
 }
 
 .info p {
     color: #33332f;
     text-transform: uppercase;
-    font-size: 0.9vw;
+    font-size: 3vw;
+    text-align: center;
 }
 
 .info ul {
@@ -37,7 +47,8 @@ body {
     padding: 1vh 0.6vw;
     color: white;
     font-weight: bold;
-    font-size: 1.1vw;
+    font-size: 3.6vw;
+    text-align: center;
 }
 
 #white {
@@ -46,21 +57,23 @@ body {
 }
 
 #titleBookmarks {
-    margin-top: 5vh;
+    margin-top: 6vw;
 }
 
 .bookmarks-wrapper {
-    margin-top: 1.7vh;
+    margin-top: 5vw;
     border: 1px solid white;
     overflow: auto;
-    height: 15vw;
-    width: 12.5vw;
+    width: 70vw;
+    height: 40vw;
+    margin: auto;
     overflow: auto;
     word-wrap: break-word;
+    text-align: center;
 }
 
 .bookmarks-card {
-    margin: 0.6vw 0;
+    margin: 2vw 0;
 }
 
 .bookmarks-card a {
@@ -69,18 +82,17 @@ body {
 
 p.bookmarks-title {
     color: #a0a09d;
-    font-size: 0.8vw;
+    font-size: 3vw;
 }
 
 p.bookmarks-author {
     color: #5c5c57;
-    font-size: 0.7vw;
+    font-size: 2.3vw;
 }
 
 header {
     width: 100%;
     border: 1px solid black;
-    z-index: 2;
     background-color: lightblue;
 }
 
@@ -497,6 +509,40 @@ div.book-card-grid:nth-child(4n) {
 
 .login-wrapper {
     display: none;
+}
+
+.mobile-icons {
+    position: fixed;
+    bottom: 2vw;
+    left: 50%;
+    width: 61%;
+    transform: translate(-50%, 0);
+    overflow: hidden;
+}
+
+.home-icon,
+.login-icon,
+.cart-icon,
+.comments-icon {
+    width: 12vw;
+    height: 12vw;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 3vw;
+    float: left;
+}
+
+.home-icon i,
+.login-icon i,
+.cart-icon i,
+.comments-icon i {
+    font-size: 7vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
 }
 
 /*================================================(MIN-WIDTH: 992PX)=============================================================*/
@@ -957,5 +1003,8 @@ div.book-card-grid:nth-child(4n) {
         margin-top: 4.5%;
         color: white;
         cursor: pointer;
+    }
+    .mobile-icons {
+        display: none;
     }
 }
