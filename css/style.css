@@ -11,30 +11,31 @@ body {
 }
 
 .b {
-    width: 20vw;
-    height: 12vw;
+    width: 20%;
+    height: 38px;
     background-image: url('../writing.jpeg');
     background-size: cover;
     float: left;
 }
 
 .info {
+                                 /* <=======================   u js napravi da bude 90% visine window-a!!!!!!*/
     display: none;
-    position: absolute;
-    top: calc(29vw + 4vh);
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 70vw;
-    height: calc(90vw + 12vh);
+    position: fixed;
+    top: 0;
+    bottom: 11vw;
+    left: 0;
+    width: 100%;
     background-color: black;
     z-index: 3;
     padding-top: 2vw;
+    overflow: auto;
 }
 
 .info p {
     color: #33332f;
     text-transform: uppercase;
-    font-size: 3vw;
+    font-size: 2.6vw;
     text-align: center;
 }
 
@@ -47,7 +48,7 @@ body {
     padding: 1vh 0.6vw;
     color: white;
     font-weight: bold;
-    font-size: 3.6vw;
+    font-size: 3vw;
     text-align: center;
 }
 
@@ -65,7 +66,8 @@ body {
     border: 1px solid white;
     overflow: auto;
     width: 70vw;
-    height: 40vw;
+    /* height: 40vw; */
+    /* max-height: 225px; */
     margin: auto;
     overflow: auto;
     word-wrap: break-word;
@@ -82,25 +84,28 @@ body {
 
 p.bookmarks-title {
     color: #a0a09d;
-    font-size: 3vw;
+    font-size: 2.2vw;
 }
 
 p.bookmarks-author {
     color: #5c5c57;
-    font-size: 2.3vw;
+    font-size: 2vw;
 }
 
 header {
     width: 100%;
+    height: 70px;
     border: 1px solid black;
     background-color: lightblue;
+    position: relative;
 }
 
 header p {
     display: inline-block;
-    font-size: 7vw;
+    font-size: 24px;
     color: white;
     margin-top: 1%;
+    margin-left: 2%;
 }
 
 i {
@@ -111,39 +116,41 @@ i {
 i.list {
     position: absolute;
     top: 30%;
-    left: 90%;
+    left: 86vw;
     font-size: 3vw;
 }
 
 i.grid {
     position: absolute;
     top: 30%;
-    left: 95%;
+    left: 90vw;
     font-size: 3vw;
 }
 
 header input {
-    display: inline-block;
-    margin-left: 10%;
-    width: 72%;
-    transform: translate(0, -5px);
+    position: absolute;
+    top: 34px;
+    left: 50%;
+    /* margin-left: 14%; */
+    width: 65%;
+    transform: translate(-50%, 0);
     border: none;
     border-bottom: 1px solid #e1e7e5;
     background-color: lightblue;
-    font-size: 4vw;
+    font-size: 17px;
     color: white;
 }
 
 i.fa-search {
-    font-size: 4vw;
+    position: absolute;
+    top: 37px;
+    left: 84%;
+    font-size: 17px;
     color: #e1e7e5;
-    transform: translate(0, -5px);
 }
 
 .container {
-    position: absolute;
-    top: calc(29vw + 4vh);
-    width: 100vw;
+    margin-top: 65px;
     border: 1px solid black;
     overflow: hidden;
 }
@@ -158,34 +165,42 @@ i.fa-search {
 } */
 
 div.book-card-grid:nth-child(4n - 3) {
-    width: 50vw;
-    height: 100vw;
-    margin-left: 25vw;
-    margin-bottom: 8vw;
+    width: 40vw;
+    max-width: 190px;
+    height: 70vw;
+    max-height: 340px;
+    margin: auto;
+    margin-bottom: 10vw;
     position: relative;
 }
 
 div.book-card-grid:nth-child(4n+2) {
-    width: 50vw;
-    height: 100vw;
-    margin-left: 25vw;
-    margin-bottom: 8vw;
+    width: 40vw;
+    max-width: 190px;
+    height: 70vw;
+    max-height: 340px;
+    margin: auto;
+    margin-bottom: 10vw;
     position: relative;
 }
 
 div.book-card-grid:nth-child(4n - 1) {
-    width: 50vw;
-    height: 100vw;
-    margin-left: 25vw;
-    margin-bottom: 8vw;
+    width: 40vw;
+    max-width: 190px;
+    height: 70vw;
+    max-height: 340px;
+    margin: auto;
+    margin-bottom: 10vw;
     position: relative;
 }
 
 div.book-card-grid:nth-child(4n) {
-    width: 50vw;
-    height: 100vw;
-    margin-left: 25vw;
-    margin-bottom: 8vw;
+    width: 40vw;
+    max-width: 190px;
+    height: 70vw;
+    max-height: 340px;
+    margin: auto;
+    margin-bottom: 10vw;
     position: relative;
 }
 
@@ -203,14 +218,14 @@ div.book-card-grid:nth-child(4n) {
     color: rgb(66, 182, 221);
     font-weight: bold;
     word-wrap: break-word;
-    font-size: 5vw;
+    font-size: 3.2vw;
     text-align: center;
 }
 
 .book-author-grid {
     margin-top: -2%;
     margin-left: 6%;
-    font-size: 4vw;
+    font-size: 2.4vw;
     color: #7c817f;
     word-wrap: break-word;
     text-align: center;
@@ -226,7 +241,7 @@ div.book-card-grid:nth-child(4n) {
     background-color: black;
     opacity: 0.9;
     padding: 3vw;
-    font-size: 3.6vw;
+    font-size: 2.2vw;
 }
 
 .book-info-title {
@@ -272,18 +287,19 @@ div.book-card-grid:nth-child(4n) {
 
 .book-price-grid {
     float: left;
-    font-size: 6vw;
+    font-size: 4vw;
 }
 
 .book-cart-grid {
     float: right;
-    font-size: 7vw;
+    font-size: 4.5vw;
     margin-top: -2%;
+    margin-right: 4%;
 }
 
 .book-cart-grid i {
     color: black;
-    font-size: 8vw;
+    font-size: 4.5vw;
 }
 
 .book-card-list {
@@ -331,8 +347,8 @@ div.book-card-grid:nth-child(4n) {
 }
 
 .last-viewed {
-    width: 80vw;
-    height: 12vw;
+    width: 80%;
+    height: 38px;
     background-color: #5c5c5a;
     padding-left: 1.5%;
     float: left;
@@ -340,25 +356,27 @@ div.book-card-grid:nth-child(4n) {
 
 .last-viewed p {
     color: #80807e;
-    font-size: 3vw;
+    font-size: 13px;
     /* position: absolute;
     top: 10%; */
 }
 
 .last-viewed a {
-    display: inline-block;
+    display: block;
     margin-left: 1.8%;
+    margin-top: -1%;
     color: #cecec3;
-    font-size: 4vw;
+    font-size: 15px;
     text-decoration: none;
     word-wrap: break-word;
+    text-align: center;
     /* margin-top: 2.5%; */
     /* padding-left: 3%; */
     /* display: block; */
 }
 
 .last-viewed a i {
-    font-size: 4vw;
+    font-size: 17px;
     color: #cecec3;
 }
 
@@ -513,23 +531,24 @@ div.book-card-grid:nth-child(4n) {
 
 .mobile-icons {
     position: fixed;
-    bottom: 2vw;
+    bottom: 5px;
     left: 50%;
-    width: 61%;
+    /* width: 185px; */
     transform: translate(-50%, 0);
     overflow: hidden;
+    border: 1px solid black;
 }
 
 .home-icon,
 .login-icon,
 .cart-icon,
 .comments-icon {
-    width: 12vw;
-    height: 12vw;
+    width: 8vw;
+    height: 8vw;
     border: 1px solid black;
     border-radius: 50%;
     position: relative;
-    margin-right: 3vw;
+    margin-right: 2vw;
     float: left;
 }
 
@@ -537,7 +556,7 @@ div.book-card-grid:nth-child(4n) {
 .login-icon i,
 .cart-icon i,
 .comments-icon i {
-    font-size: 7vw;
+    font-size: 4vw;
     position: absolute;
     top: 50%;
     left: 50%;
