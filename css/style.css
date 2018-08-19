@@ -152,17 +152,20 @@ i.fa-search {
 .search-output {
     display: none;
     position: fixed;
-    top: 65px;
+    top: 70px;
+    bottom: 40px;
     left: 50%;
     transform: translate(-50%, 0);
     width: 65%;
     z-index: 3;
     background-color: white;
     padding: 10px;
+    overflow: auto;
 }
 
 .search-output-card {
     overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .search-output-card img {
@@ -190,52 +193,7 @@ i.fa-search {
     overflow: hidden;
 }
 
-/* .book-card-grid {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    border: 1px solid black;
-} */
-
-div.book-card-grid:nth-child(4n - 3) {
-    /* width: 40vw; */
-    /* max-width: 190px; */
-    width: 190px;
-    /* height: 70vw; */
-    /* max-height: 340px; */
-    height: 340px;
-    margin: auto;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-div.book-card-grid:nth-child(4n+2) {
-    /* width: 40vw; */
-    /* max-width: 190px; */
-    width: 190px;
-    /* height: 70vw; */
-    /* max-height: 340px; */
-    height: 340px;
-    margin: auto;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-div.book-card-grid:nth-child(4n - 1) {
-    /* width: 40vw; */
-    /* max-width: 190px; */
-    width: 190px;
-    /* height: 70vw; */
-    /* max-height: 340px; */
-    height: 340px;
-    margin: auto;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-div.book-card-grid:nth-child(4n) {
+div.book-card-grid {
     /* width: 40vw; */
     /* max-width: 190px; */
     width: 190px;
@@ -543,10 +501,12 @@ div.book-card-grid:nth-child(4n) {
 }
 
 .display-comments {
-    margin-top: 15px;
-    height: 77%;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    right: 10px;
+    bottom: 70px;
     overflow: auto;
-    margin-left: 10px;
 }
 
 .comment-card {
@@ -569,6 +529,10 @@ div.book-card-grid:nth-child(4n) {
 }
 
 .leaving-comments {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #5c5c5a;
     padding: 5px;
 }
@@ -588,8 +552,16 @@ div.book-card-grid:nth-child(4n) {
     color: white;
     font-size: 15px;
     text-align: center;
-    width: 90%;
+    width: 80%;
     margin: 5px auto;
+}
+
+.send-comment {
+    position: absolute;
+    top: 40px;
+    left: 92%;
+    font-size: 19px;
+    cursor: pointer;
 }
 
 .login-wrapper {
@@ -684,7 +656,7 @@ label {
     right: 0;
     bottom: 40px;
     background-color: white;
-    z-index: 2;
+    z-index: 3;
     padding: 15px;
 }
 
@@ -749,12 +721,249 @@ label {
     color: black;
 }
 
+.block {
+    display: block;
+}
+
 @media screen and (min-width: 40px) and (max-width: 380px) {
     .last-viewed a {
         font-size: 12px;
     }
     .last-viewed a i {
         font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 583px) {
+    .container {
+        padding-top: 60px;
+    }
+    header {
+        height: 90px;
+    }
+    header p {
+        font-size: 25px;
+    }
+    header input {
+        margin-top: 8px;
+        font-size: 19px;
+    }
+    i.fa-search {
+        top: 60px;
+        font-size: 20px;
+    }
+    .b {
+        height: 50px;
+        margin-top: 90px
+    }
+    .last-viewed {
+        height: 50px;
+        margin-top: 90px;
+    }
+    .last-viewed p {
+        font-size: 16px;
+    }
+    .last-viewed a,
+    .last-viewed a i {
+        font-size: 20px;
+    }
+    div.book-card-grid:nth-child(2n - 1) {
+        float: left;
+        width: 240px;
+        height: 400px;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    div.book-card-grid:nth-child(2n) {
+        float: right;
+        width: 240px;
+        height: 400px;
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+    .book-title-grid {
+        font-size: 20px;
+    }
+    .book-author-grid {
+        font-size: 16px;
+    }
+    .book-card-info {
+        height: 94%;
+    }
+    .book-info-title {
+        font-size: 15px;
+    }
+    .book-info-author {
+        font-size: 15px;
+    }
+    .book-info-summary {
+        font-size: 15px;
+    }
+    .book-info-description {
+        font-size: 15px;
+    }
+    .book-info-rating {
+        font-size: 15px;
+    }
+    .book-price-grid {
+        font-size: 21px;
+    }
+    .book-cart-grid,
+    .book-cart-grid i {
+        font-size: 25px;
+    }
+    .bookmark-icon-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+    .bookmark-icon {
+        font-size: 25px;
+    }
+    .mobile-icons {
+        width: 300px;
+    }
+    .home-icon,
+    .login-icon,
+    .cart-icon,
+    .comments-icon {
+        margin-left: 20px;
+        width: 40px;
+        height: 40px;
+    }
+    .home-icon i,
+    .login-icon i,
+    .cart-icon i,
+    .comments-icon i {
+        font-size: 26px;
+    }
+    .info {
+        bottom: 50px;
+    }
+    .info>p {
+        margin-top: 100px;
+        font-size: 18px;
+    }
+    .info ul li {
+        font-size: 23px;
+    }
+    p.bookmarks-title {
+        font-size: 14px;
+    }
+    p.bookmarks-author {
+        font-size: 12px;
+    }
+    .login-wrapper {
+        bottom: 50px;
+    }
+    .login-wrapper p {
+        margin-top: 100px;
+        font-size: 25px;
+    }
+    .login-wrapper [type="text"],
+    [type="password"] {
+        padding: 7px;
+        font-size: 19px;
+    }
+    label {
+        font-size: 19px;
+    }
+    label input {
+        padding: 6px;
+    }
+    .login-wrapper div {
+        padding: 10px 15px;
+        font-size: 18px;
+    }
+    .cart-wrapper-mobile {
+        bottom: 50px;
+    }
+    .no-of-books {
+        margin-top: 50px;
+        font-size: 23px;
+    }
+    .total {
+        margin-top: 50px;
+        font-size: 23px;
+    }
+    .cart-card {
+        margin-top: 25px;
+    }
+    .cart-card img {
+        width: 70px;
+        height: 120px;
+    }
+    .cart-card>p {
+        font-size: 21px;
+    }
+    .cart-card div p {
+        font-size: 21px;
+    }
+    .comments {
+        bottom: 50px;
+    }
+    .discussion {
+        font-size: 23px;
+    }
+    .display-comments {
+        bottom: 80px;
+    }
+    .comment-card {
+        margin-top: 15px;
+    }
+    .comment-card img {
+        width: 30px;
+        height: 30px;
+    }
+    .comment-card p {
+        font-size: 17px;
+    }
+    .leaving-comments img {
+        width: 30px;
+        height: 30px;
+    }
+    .leaving-comments input {
+        font-size: 18px;
+    }
+    .send-comment {
+        /*??????????????????????????????????????????????????????????????? ne povecava velicinu KAO I ZA BOOKMARK-ICON*/
+        font-size: 25px;
+    }
+}
+
+@media screen and (min-width: 870px) {
+    header p {
+        font-size: 28px;
+    }
+    header input {
+        margin-top: -2px;
+    }
+    i.fa-search {
+        top: 50px;
+        font-size: 24px;
+    }
+    .last-viewed p {
+        font-size: 19px;
+    }
+    .container {
+        padding-top: 30px;
+    }
+    div.book-card-grid:nth-child(3n-2) {
+        float: left;
+        margin-left: 80px;
+        margin-right: 0;
+        margin-top: 40px;
+    }
+    div.book-card-grid:nth-child(3n-1) {
+        float: left;
+        margin-left: 3vw;
+        margin-right: 0;
+        margin-top: 40px;
+    }
+    div.book-card-grid:nth-child(3n) {
+        float: left;
+        margin-left: 3vw;
+        margin-right: 0;
+        margin-top: 40px;
     }
 }
 
@@ -868,14 +1077,7 @@ label {
         width: 55.9vw;
         padding-top: 2%;
     }
-    /* .book-card-grid {
-    float: left;
-    width: 15%;
-    height: 16vw;
-    margin-bottom: 5%;
-    margin-right: 10%;
-    border: 1px solid black;
-} */
+
     div.book-card-grid:nth-child(4n - 3) {
         float: left;
         width: 8.3vw;
@@ -1164,6 +1366,10 @@ label {
         cursor: pointer;
     }
     .mobile-icons {
+        display: none;
+    }
+    .info .close,
+    .comments .close {
         display: none;
     }
 }
