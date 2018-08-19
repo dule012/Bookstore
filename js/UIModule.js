@@ -17,10 +17,18 @@ commentsIcon.addEventListener('click', () => {
     comments.classList.toggle('block')
 })
 
-const cartWrapperMobile = document.querySelector('.cart-wrapper-mobile')
+const cartWrapperMobile = document.querySelector('.cart-wrapper')
 const cartIcon = document.querySelector('.cart-icon')
 
 cartIcon.addEventListener('click', () => {
     cartWrapperMobile.classList.toggle('block')
+})
+
+const search = document.querySelector('header input')
+const searchOutput = document.querySelector('.search-output')
+
+search.addEventListener('keydown',()=>{
+    searchOutput.classList.toggle('block')
+    console.log(searchOutput.style.display)
 })
 

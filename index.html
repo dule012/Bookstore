@@ -32,51 +32,55 @@
             </div>
         </div>
     </header>
-
-    <div class="b">
-        <!-- <p>B</p> -->
-    </div>
-    <div class="last-viewed">
-        <p>Last viewed</p>
-        <a href="./bookInfo.html">The Lord of the Rings
-            <i class="fa">&#xf178;</i>
-        </a>
-    </div>
-    <div class="info">
-        <i class="fa close">&#xf00d;</i>
-        <p>browse</p>
-        <ul>
-            <li>Now Reading</li>
-            <li id="white">Bookstore</li>
-            <li>Collection</li>
-            <li>Forum</li>
-        </ul>
-        <p id="titleBookmarks">bookmarks</p>
-        <div class="bookmarks-wrapper">
-
-            <div class="bookmarks-card">
-                <p class="bookmarks-title">
-                    <a href="./bookInfo.html">The Great Gatsby</a>
-                </p>
-                <p class="bookmarks-author">
-                    <a href="./bookInfo.html">F. Scott Fitzgerald</a>
-                </p>
-
-            </div>
-
-            <div class="bookmarks-card">
-                <p class="bookmarks-title">
-                    <a href="./bookInfo.html">To Kill a Mockingbird</a>
-                </p>
-                <p class="bookmarks-author">
-                    <a href="./bookInfo.html">Harper Lee</a>
-                </p>
-                </a>
-            </div>
+    <div class="left-wrapper">
+        <div class="b">
+            <!-- <p>B</p> -->
         </div>
 
-    </div>
+        <div class="last-viewed-mobile">
+            <p>Last viewed</p>
+            <a href="./bookInfo.html">The Lord of the Rings
+                <i class="fa">&#xf178;</i>
+            </a>
+        </div>
 
+        <div class="info open-mobile">
+            <i class="fa close">&#xf00d;</i>
+            <p>browse</p>
+            <ul>
+                <li>Now Reading</li>
+                <li id="white">Bookstore</li>
+                <li>Collection</li>
+                <li>Forum</li>
+            </ul>
+            <p id="titleBookmarks">bookmarks</p>
+            <div class="bookmarks-wrapper">
+
+                <div class="bookmarks-card">
+                    <p class="bookmarks-title">
+                        <a href="./bookInfo.html">The Great Gatsby</a>
+                    </p>
+                    <p class="bookmarks-author">
+                        <a href="./bookInfo.html">F. Scott Fitzgerald</a>
+                    </p>
+                    <i class="fa  delete-bookmark-card">&#xf00d;</i>
+                </div>
+
+                <div class="bookmarks-card">
+                    <p class="bookmarks-title">
+                        <a href="./bookInfo.html">To Kill a Mockingbird</a>
+                    </p>
+                    <p class="bookmarks-author">
+                        <a href="./bookInfo.html">Harper Lee</a>
+                    </p>
+                    </a>
+                    <i class="fa delete-bookmark-card">&#xf00d;</i>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
     <div class="container">
 
         <div class="book-card-grid">
@@ -92,6 +96,7 @@
                 <p class="book-cart-grid">+
                     <i class="fa fa-shopping-cart"></i>
                 </p>
+                <div class="book-card-grid-background"></div>
             </div>
             <div class="book-card-info">
                 <div class="bookmark-icon-wrapper">
@@ -107,7 +112,7 @@
                     beatae vitae omnis eaque eum eligendi maxime nesciunt autem reprehenderit, temporibus recusandae ex reiciendis
                     optio.
                 </p>
-                <div class="star-wrapper">
+                <div class="star-wrapper-grid">
                     <p class="book-info-rating">rating</p>
                     <i class="fa fa-star one"></i>
                     <i class="fa fa-star"></i>
@@ -193,6 +198,14 @@
             </a>
             <p class="book-description-list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, laudantium omnis sequi ut ipsa assumenda odit.
                 Excepturi incidunt dignissimos ut saepe quod labore! Quam amet quo similique ut, consequatur eos?</p>
+            <div class="star-wrapper-list">
+                <p class="book-info-rating">rating</p>
+                <i class="fa fa-star one"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </div>
         </div>
         <div class="book-card-list">
             <img src="./content.jpeg" alt="cardImage">
@@ -241,43 +254,7 @@
         </div>
     </div>
 
-
-
-    <div class="cart-and-login">
-        <div class="cart">
-            <p>Cart</p>
-            <i class="fa fa-shopping-cart"></i>
-        </div>
-        <div class="login">
-            <p>Login</p>
-        </div>
-    </div>
-
-    <div class="comments">
-        <i class="fa close">&#xf00d;</i>
-        <p class="discussion">discussion</p>
-        <div class="display-comments">
-            <div class="comment-card">
-                <img src="./user-icon.png" alt="user-icon">
-                <p>Have you guys read The Lord of the Rings yet?</p>
-            </div>
-            <div class="comment-card">
-                <img src="./user-icon.png" alt="user-icon">
-                <p>I'm looking for some new good fantasy books. Anyone here can recomend me something?</p>
-            </div>
-            <div class="comment-card">
-                <img src="./user-icon.png" alt="user-icon">
-                <p>You should try A Clash of Kings by George R.R. Martin.</p>
-            </div>
-        </div>
-        <div class="leaving-comments">
-            <img src="./user-icon.png" alt="user-icon">
-            <input type="text" name="commenting" placeholder="Share your thoughts     &#xf0e5;" style="font-family:Arial, FontAwesome">
-            <i class="fa send-comment">&#xf1d9;</i>
-        </div>
-    </div>
-
-    <div class="login-wrapper">
+    <div class="login-wrapper open-mobile">
         <i class="fa close">&#xf00d;</i>
         <p>Please Enter Your Information</p>
         <input type="text" name="username" placeholder="Enter your username">
@@ -288,25 +265,26 @@
         </label>
         <div>Login</div>
     </div>
+    <div class="login-background"></div>
 
     <div class="mobile-icons">
 
-        <div class="home-icon">
+        <div class="home-icon icons">
             <i class="fa">&#xf015;</i>
         </div>
-        <div class="login-icon">
+        <div class="login-icon icons">
             <i class="fa">&#xf007;</i>
         </div>
-        <div class="cart-icon">
+        <div class="cart-icon icons">
             <i class="fa">&#xf07a;</i>
         </div>
-        <div class="comments-icon">
+        <div class="comments-icon icons">
             <i class="fa">&#xf0e6;</i>
         </div>
 
     </div>
 
-    <div class="cart-wrapper-mobile">
+    <div class="cart-wrapper open-mobile">
         <i class="fa close">&#xf00d;</i>
         <p class="no-of-books">No. of books:
             <span>1</span>
@@ -320,13 +298,56 @@
             <div>
                 <p>1</p>
                 <p>24.69$</p>
-                <i class="fa close">&#xf00d;</i>
+                <i class="fa delete-cart-card">&#xf00d;</i>
             </div>
 
         </div>
 
     </div>
+    <div class="right-wrapper">
+        <div class="last-viewed-comp">
+            <p>Last viewed</p>
+            <a href="./bookInfo.html">The Lord of the Rings
+                <i class="fa">&#xf178;</i>
+            </a>
+        </div>
 
+        <div class="cart-and-login">
+            <div class="cart">
+                <i class="fa fa-shopping-cart i-cart-comp"></i>
+                <i class="i-total-comp">$
+                    <i>24.69</i>
+                </i>
+            </div>
+            <div class="login">
+                <p>Login</p>
+            </div>
+        </div>
+
+        <div class="comments open-mobile comments-comp">
+            <i class="fa close">&#xf00d;</i>
+            <p class="discussion">discussion</p>
+            <div class="display-comments">
+                <div class="comment-card">
+                    <img src="./user-icon.png" alt="user-icon">
+                    <p>Have you guys read The Lord of the Rings yet?</p>
+                </div>
+                <div class="comment-card">
+                    <img src="./user-icon.png" alt="user-icon">
+                    <p>I'm looking for some new good fantasy books. Anyone here can recomend me something?</p>
+                </div>
+                <div class="comment-card">
+                    <img src="./user-icon.png" alt="user-icon">
+                    <p>You should try A Clash of Kings by George R.R. Martin.</p>
+                </div>
+            </div>
+            <div class="leaving-comments">
+                <img src="./user-icon.png" alt="user-icon">
+                <input type="text" name="commenting" placeholder="Share your thoughts     &#xf0e5;" style="font-family:Arial, FontAwesome">
+                <i class="fa send-comment">&#xf1d9;</i>
+            </div>
+        </div>
+    </div>
     <script src="./js/UIModule.js"></script>
 </body>
 
