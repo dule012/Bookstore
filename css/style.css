@@ -16,7 +16,7 @@ body {
     background-image: url('../writing.jpeg');
     background-size: cover;
     float: left;
-    margin-top: -37.5px;
+    margin-top: -37.6px;
     /*??????????????????????????/*/
 }
 
@@ -112,7 +112,6 @@ header {
     left: 0;
     right: 0;
     height: 70px;
-    border: 1px solid black;
     background-color: lightblue;
     text-align: center;
     z-index: 3;
@@ -203,7 +202,6 @@ i.fa-search {
     width: 100%;
     padding-top: 30px;
     margin-top: 108px;
-    border: 1px solid black;
 }
 
 div.book-card-grid {
@@ -253,7 +251,7 @@ div.book-card-grid {
     padding: 17px;
 }
 
-.bookmark-icon-wrapper {
+.bookmark-icon-wrapper-grid {
     position: absolute;
     top: 20px;
     right: 10px;
@@ -264,7 +262,7 @@ div.book-card-grid {
     cursor: pointer;
 }
 
-.bookmark-icon {
+.bookmark-icon-grid {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -338,57 +336,13 @@ div.book-card-grid {
     font-size: 21px;
 }
 
-.book-card-list {
-    width: 100%;
-    height: 13vw;
-    clear: both;
-    overflow: hidden;
-    margin-bottom: 6vw;
-}
-
-.book-card-list img {
-    height: 100%;
-    width: 15%;
-    float: left;
-}
-
-.book-card-list a {
-    text-decoration: none;
-}
-
-.book-title-list,
-.book-author-list,
-.book-description-list {
-    float: left;
-    width: 85%;
-    text-align: center;
-}
-
-.book-title-list {
-    font-weight: bold;
-    font-size: 1.3vw;
-    color: rgb(66, 182, 221);
-}
-
-.book-author-list {
-    color: rgb(66, 182, 221);
-    font-size: 1vw;
-    color: #7c817f;
-}
-
-.book-description-list {
-    font-size: 1vw;
-    margin-top: 4.2vw;
-    word-wrap: break-word;
-}
-
 .last-viewed-mobile {
     width: 80%;
     height: 38px;
     background-color: #5c5c5a;
     padding-left: 1.5%;
     float: left;
-    margin-top: -37.5px;
+    margin-top: -37.6px;
     /*???????????????*/
 }
 
@@ -561,7 +515,6 @@ label {
     width: 165px;
     transform: translate(-50%, 0);
     overflow: hidden;
-    border: 1px solid black;
 }
 
 .home-icon,
@@ -669,6 +622,10 @@ label {
     display: block;
 }
 
+.book-card-list {
+    display: none;
+}
+
 .cart-and-login {
     display: none;
 }
@@ -772,41 +729,41 @@ label {
         margin-left: 25px;
     }
     .book-title-grid {
-        font-size: 20px;
-    }
-    .book-author-grid {
         font-size: 16px;
     }
+    .book-author-grid {
+        font-size: 13px;
+    }
     .book-card-info {
-        height: 94%;
+        height: 95%;
     }
     .book-info-title {
-        font-size: 15px;
+        font-size: 12px;
     }
     .book-info-author {
-        font-size: 15px;
+        font-size: 12px;
     }
     .book-info-summary {
-        font-size: 15px;
+        font-size: 12px;
     }
     .book-info-description {
-        font-size: 15px;
+        font-size: 12px;
     }
     .book-info-rating {
-        font-size: 15px;
+        font-size: 12px;
     }
     .book-price-grid {
-        font-size: 21px;
+        font-size: 17px;
     }
     .book-cart-grid,
     .book-cart-grid i {
-        font-size: 25px;
+        font-size: 20px;
     }
-    .bookmark-icon-wrapper {
+    .bookmark-icon-wrapper-grid {
         width: 40px;
         height: 40px;
     }
-    .bookmark-icon {
+    .bookmark-icon-grid {
         font-size: 25px;
     }
     .mobile-icons {
@@ -831,68 +788,68 @@ label {
     }
     .info>p {
         margin-top: 50px;
-        font-size: 18px;
+        font-size: 15px;
     }
     .info ul li {
-        font-size: 23px;
+        font-size: 17px;
     }
     p.bookmarks-title {
-        font-size: 14px;
+        font-size: 12px;
     }
     p.bookmarks-author {
-        font-size: 12px;
+        font-size: 10px;
     }
     .login-wrapper {
         bottom: 50px;
     }
     .login-wrapper p {
         margin-top: 100px;
-        font-size: 25px;
+        font-size: 19px;
     }
     .login-wrapper [type="text"],
     [type="password"] {
-        padding: 7px;
-        font-size: 19px;
+        padding: 3px;
+        font-size: 15px;
     }
     label {
-        font-size: 19px;
+        font-size: 15px;
     }
     label input {
-        padding: 6px;
+        padding: 3px;
     }
     .login-wrapper div {
-        padding: 10px 15px;
-        font-size: 18px;
+        padding: 7px 12px;
+        font-size: 15px;
     }
     .cart-wrapper {
         bottom: 50px;
     }
     .no-of-books {
-        margin-top: 50px;
-        font-size: 23px;
+        margin-top: 25px;
+        font-size: 16px;
     }
     .total {
-        margin-top: 50px;
-        font-size: 23px;
+        margin-top: 25px;
+        font-size: 16px;
     }
     .cart-card {
         margin-top: 25px;
     }
     .cart-card img {
-        width: 70px;
-        height: 120px;
+        width: 50px;
+        height: 100px;
     }
     .cart-card>p {
-        font-size: 21px;
+        font-size: 16px;
     }
     .cart-card div p {
-        font-size: 21px;
+        font-size: 16px;
     }
     .comments {
         bottom: 50px;
     }
     .discussion {
-        font-size: 23px;
+        font-size: 18px;
     }
     .display-comments {
         bottom: 80px;
@@ -901,18 +858,18 @@ label {
         margin-top: 15px;
     }
     .comment-card img {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
     .comment-card p {
-        font-size: 17px;
+        font-size: 13px;
     }
     .leaving-comments img {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
     }
     .leaving-comments input {
-        font-size: 18px;
+        font-size: 16px;
     }
     .send-comment {
         /*???????????????????????????????????????? ne povecava velicinu KAO I ZA BOOKMARK-ICON   <== najverovatnije zbog parenta u kojem je zadat font-size pa nasladjuje*/
@@ -1008,7 +965,7 @@ label {
         font-size: 1vw;
     }
     #titleBookmarks {
-        margin-top: 6vw;
+        margin-top: 3vw;
     }
     .bookmarks-wrapper {
         width: 95%;
@@ -1090,10 +1047,9 @@ label {
         color: #dce2e0;
     }
     .search-output {
-        position: fixed;
         top: 10%;
         left: 62%;
-        bottom: 0;
+        bottom: 1vw;
         width: 26%;
         z-index: 3;
     }
@@ -1205,7 +1161,7 @@ label {
         margin-top: 6%;
         font-size: 0.8vw;
     }
-    .bookmark-icon-wrapper {
+    .bookmark-icon-wrapper-grid {
         top: 28%;
         left: -35%;
         transform: translate(-50%, -50%);
@@ -1244,28 +1200,95 @@ label {
         font-size: 0.8vw;
     }
     .book-card-list {
+        display: block;
         width: 100%;
         height: 13vw;
+        clear: both;
+        overflow: hidden;
         margin-bottom: 6vw;
+        position: relative;
     }
     .book-card-list img {
         height: 100%;
         width: 15%;
+        float: left;
+    }
+    .book-card-list a {
+        text-decoration: none;
     }
     .book-title-list,
     .book-author-list,
     .book-description-list {
+        float: left;
         width: 85%;
+        text-align: center;
     }
     .book-title-list {
+        font-weight: bold;
         font-size: 1.3vw;
+        color: rgb(66, 182, 221);
     }
     .book-author-list {
+        color: rgb(66, 182, 221);
         font-size: 1vw;
+        color: #7c817f;
     }
     .book-description-list {
         font-size: 1vw;
         margin-top: 4.2vw;
+        word-wrap: break-word;
+    }
+    .star-wrapper-list {
+        position: absolute;
+        top: 35%;
+        left: 52%;
+    }
+    .star-wrapper-list i {
+        font-size: 1.2vw;
+    }
+    .star-wrapper-list i:nth-child(1),
+    .star-wrapper-list i:nth-child(2),
+    .star-wrapper-list i:nth-child(3) {
+        color: yellow;
+        cursor: none;
+    }
+    .star-wrapper-list i:nth-child(4),
+    .star-wrapper-list i:nth-child(5) {
+        color: grey;
+        cursor: none;
+    }
+    .book-price-list {
+        position: absolute;
+        top: 0;
+        right: 11%;
+        font-size: 1.2vw;
+    }
+    .book-cart-list {
+        position: absolute;
+        top: 0;
+        right: 2%;
+    }
+    .book-cart-list i {
+        font-size: 1.5vw;
+        color: black;
+    }
+    .bookmark-icon-wrapper-list {
+        position: absolute;
+        top: 0;
+        left: 16%;
+        width: 3vw;
+        height: 3vw;
+        border-radius: 50%;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+    .bookmark-icon-list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5vw;
+        color: black;
     }
     .right-wrapper {
         position: fixed;
@@ -1286,20 +1309,22 @@ label {
     }
     .last-viewed-comp p {
         margin: 0;
+        color: #6e6e6c;
         font-size: 1.2vw;
     }
     .last-viewed-comp a {
         display: block;
         width: 96%;
         height: 70%;
+        color: #ababaa;
         font-size: 1.6vw;
-        border: 1px solid white;
         line-height: calc(1.2vw + 1.2vh);
         overflow: auto;
         text-align: center;
         text-decoration: none;
     }
     .last-viewed-comp a i {
+        color: #ababaa;
         font-size: 1.4vw;
     }
     .cart-and-login {
@@ -1384,7 +1409,6 @@ label {
         height: 83%;
         overflow: auto;
         margin-left: 1.3vw;
-        border: 1px solid black;
     }
     .comment-card {
         margin-bottom: 1vw;
@@ -1392,13 +1416,11 @@ label {
         overflow: hidden;
     }
     .comment-card img {
-        border: 1px solid black;
         width: 12%;
         height: 12%;
         float: left;
     }
     .comment-card p {
-        border: 1px solid black;
         margin-top: 0;
         text-align: left;
         float: left;

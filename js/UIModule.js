@@ -29,6 +29,5 @@ const searchOutput = document.querySelector('.search-output')
 
 search.addEventListener('keydown',()=>{
     searchOutput.classList.toggle('block')
-    console.log(searchOutput.style.display)
 })
 
