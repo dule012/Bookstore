@@ -1141,7 +1141,7 @@ label {
         color: white;
         background-color: black;
         opacity: 0.9;
-        height: 145%;
+        height: initial;
         width: 200%;
         z-index: 2;
     }
@@ -1171,8 +1171,8 @@ label {
     .book-info-summary {
         text-transform: uppercase;
         color: #4d5561;
-        margin-top: 6%;
         font-size: 0.9vw;
+        margin-top: 1.5vw;
     }
     .book-info-description {
         font-size: 0.9vw;
@@ -1180,31 +1180,31 @@ label {
     .book-info-rating {
         text-transform: uppercase;
         color: #4c5b6c;
-        margin-top: 6%;
         font-size: 0.8vw;
+        margin-top: 1.5vw;
     }
     .star-wrapper-grid i {
         font-size: 0.9vw;
     }
     .bookmark-icon-wrapper-grid {
-        top: 28%;
+        top: 41%;
         left: -35%;
         transform: translate(-50%, -50%);
         z-index: 3;
     }
     .price-wrapper {
-        width: inherit;
         padding: 1.2%;
         overflow: hidden;
     }
     .book-price-grid {
         float: left;
         font-size: 1vw;
+        margin-top: 0.5vw
     }
     .book-cart-grid {
         float: right;
         font-size: 1.4vw;
-        margin-top: -2%;
+        margin-top: 0.3vw;
     }
     .book-cart-grid i {
         color: black;

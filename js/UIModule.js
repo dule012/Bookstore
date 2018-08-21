@@ -17,11 +17,11 @@ commentsIcon.addEventListener('click', () => {
     comments.classList.toggle('block')
 })
 
-const cartWrapperMobile = document.querySelector('.cart-wrapper')
+const cartWrapper = document.querySelector('.cart-wrapper')
 const cartIcon = document.querySelector('.cart-icon')
 
 cartIcon.addEventListener('click', () => {
-    cartWrapperMobile.classList.toggle('block')
+    cartWrapper.classList.toggle('block')
 })
 
 const search = document.querySelector('header input')
@@ -206,7 +206,25 @@ const bookInfoDisplay = () => {
     }
 }
 
+const cartComp = document.querySelector('.cart')
+const closeCart = document.querySelector('.cart-wrapper .close')
+cartComp.addEventListener('click', () => {
+    cartWrapper.style.display = 'block'
+})
 
+closeCart.addEventListener('click', () => {
+    cartWrapper.style.display = 'none'
+})
+
+window.addEventListener('click', (e) => {
+    console.log(e.target)
+    // if (e.target.parentNode== cartComp) {
+    //     console.log('ok')
+    // }
+    if (e.target.matches('.cart-wrapper') == false  && e.target.closest('.cart-wrapper') != cartWrapper && e.target.matches('.cart') == false) {
+        cartWrapper.style.display = 'none'
+    }
+})
 // const bookmarkIconChangeColor = () => {
 //     const bookmarkIconWrapperList = document.querySelectorAll('.bookmark-icon-wrapper-list')
 //     const bookmarkIconWrapperList_i = document.querySelectorAll('.bookmark-icon-wrapper-list')
@@ -229,21 +247,5 @@ const bookInfoDisplay = () => {
 
 export {
     createBookGrid,
-    bookInfoDisplay,
+    bookInfoDisplay
 }
-
-
-
-
-
-
-
-
-
-
-
-// <i class="fa fa-star yellow"></i>
-// <i class="fa fa-star"></i>
-// <i class="fa fa-star"></i>
-// <i class="fa fa-star grey"></i>
-// <i class="fa fa-star"></i>
