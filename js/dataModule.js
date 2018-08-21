@@ -7,9 +7,10 @@ class Book {
         this.pageCount = obj.volumeInfo.pageCount
         this.description = obj.volumeInfo.description
         this.categories = obj.volumeInfo.categories[0]
-        this.averageRating = obj.volumeInfo.averageRating
+        this.averageRating =  obj.volumeInfo.averageRating
         this.smallThumbnail = obj.volumeInfo.imageLinks.smallThumbnail
         this.thumbnail = obj.volumeInfo.imageLinks.thumbnail
+        this.price = (Math.random() * 25 + 5).toFixed(2)
     }
 }
 
@@ -19,4 +20,4 @@ const booksArr = (obj) => {
     })
 }
 
-// export default booksArr
+export default booksArr
