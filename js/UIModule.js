@@ -206,25 +206,107 @@ const bookInfoDisplay = () => {
     }
 }
 
-const cartComp = document.querySelector('.cart')
-const closeCart = document.querySelector('.cart-wrapper .close')
-cartComp.addEventListener('click', () => {
-    cartWrapper.style.display = 'block'
-})
 
-closeCart.addEventListener('click', () => {
-    cartWrapper.style.display = 'none'
-})
+const openAndCloseCartWrapper = () => {
 
-window.addEventListener('click', (e) => {
-    console.log(e.target)
-    // if (e.target.parentNode== cartComp) {
-    //     console.log('ok')
-    // }
-    if (e.target.matches('.cart-wrapper') == false  && e.target.closest('.cart-wrapper') != cartWrapper && e.target.matches('.cart') == false) {
+    const cartComp = document.querySelector('.cart')
+    const closeCart = document.querySelector('.cart-wrapper .close')
+    const cartWrapper = document.querySelector('.cart-wrapper')
+
+    cartComp.addEventListener('click', () => {
+        cartWrapper.style.display = 'block'
+    })
+
+    closeCart.addEventListener('click', () => {
         cartWrapper.style.display = 'none'
+    })
+
+    const closeCartWrapper = (e) => {
+        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp) {
+            cartWrapper.style.display = 'none'
+        }
     }
-})
+    if (window.innerWidth >= 992) {
+        window.addEventListener('click', closeCartWrapper)
+    } else {
+        window.removeEventListener('click', closeCartWrapper)
+    }
+
+}
+
+const openAndCloseLoginWrapper = () => {
+
+    const loginWrapper = document.querySelector('.login-wrapper')
+    const loginBackground = document.querySelector('.login-background')
+    const loginComp = document.querySelector('.login')
+    const loginClose = document.querySelector('.login-wrapper .close')
+
+    loginComp.addEventListener('click', () => {
+        loginWrapper.style.display = 'block'
+        loginBackground.style.display = 'block'
+        setTimeout(() => {
+            loginWrapper.style.top = '50%'
+        }, 10)
+    })
+
+    loginClose.addEventListener('click', () => {
+        loginWrapper.style.top = '35%'
+        setTimeout(() => {
+            loginWrapper.style.display = 'none'
+            loginBackground.style.display = 'none'
+        }, 401)
+    })
+
+    const closeLoginWrapperComp = (e) => {
+        if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login') != loginComp) {
+            loginWrapper.style.display = 'none'
+            loginBackground.style.display = 'none'
+        }
+    }
+
+    if (window.innerWidth >= 992) {
+        window.addEventListener('click', closeLoginWrapperComp)
+    } else {
+        windown.removeEventListener('click', closeLoginWrapperComp)
+    }
+
+}
+
+const postCommentsBookstoore = () => {
+    const input = document.querySelector('.leaving-comments input')
+    const sendComment = document.querySelector('.leaving-comments i')
+    const displayComments = document.querySelector('.display-comments')
+
+    const createCommentCard = () => {
+        let CommentCard = document.createElement('div')
+        CommentCard.setAttribute('class', 'comment-card')
+
+        let CommentCardImg = document.createElement('img')
+        CommentCardImg.setAttribute('src', './user-icon.png')
+        CommentCardImg.setAttribute('alt', 'Comment Card Img')
+        CommentCard.append(CommentCardImg)
+
+        let CommentCardP = document.createElement('p')
+        let CommentCardPText = document.createTextNode(input.value)
+        CommentCardP.append(CommentCardPText)
+        CommentCard.append(CommentCardP)
+        displayComments.append(CommentCard)
+
+        input.value = ''
+    }
+
+    input.addEventListener('keydown', (e) => {
+        if (e.keyCode == 13 && input.value != '') {
+            createCommentCard()
+        }
+    })
+
+    sendComment.addEventListener('click', () => {
+        if (input.value != '') {
+            createCommentCard()
+        }
+    })
+}
 // const bookmarkIconChangeColor = () => {
 //     const bookmarkIconWrapperList = document.querySelectorAll('.bookmark-icon-wrapper-list')
 //     const bookmarkIconWrapperList_i = document.querySelectorAll('.bookmark-icon-wrapper-list')
@@ -247,5 +329,8 @@ window.addEventListener('click', (e) => {
 
 export {
     createBookGrid,
-    bookInfoDisplay
+    bookInfoDisplay,
+    openAndCloseCartWrapper,
+    openAndCloseLoginWrapper,
+    postCommentsBookstoore
 }

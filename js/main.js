@@ -3,6 +3,9 @@ import {
     createBookGrid,
     bookInfoDisplay,
     // bookmarkIconChangeColor
+    openAndCloseCartWrapper,
+    openAndCloseLoginWrapper,
+    postCommentsBookstoore
 } from './UIModule.js'
 
 const apiBooks = 'https://www.googleapis.com/books/v1/volumes?q=with&printType=books&projection=full'
@@ -13,5 +16,8 @@ fetch(apiBooks).then((data) => {
     console.log(booksArr(data))
     createBookGrid(booksArr(data))
         bookInfoDisplay()
+        openAndCloseCartWrapper()
+        openAndCloseLoginWrapper()
+        postCommentsBookstoore()
 })
 

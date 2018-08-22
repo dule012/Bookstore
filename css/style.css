@@ -1487,7 +1487,6 @@ label {
         font-size: 1.2vw;
     }
     .login-background {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -1498,16 +1497,16 @@ label {
         z-index: 4;
     }
     .login-wrapper {
-        display: none;
         padding-top: 0;
         padding: 2vw;
-        top: 50%;
+        top: 35%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 50%;
         height: 40%;
         z-index: 5;
         background-color: black;
+        transition: 0.4s ease-in-out;
     }
     .login-wrapper p {
         font-size: 2vw;
@@ -1526,7 +1525,6 @@ label {
         margin-top: 1vw;
     }
     .cart-wrapper {
-        display: none;
         top: 2vw;
         left: 50%;
         bottom: 2vw;
