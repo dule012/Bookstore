@@ -5,7 +5,9 @@ import {
     // bookmarkIconChangeColor
     openAndCloseCartWrapper,
     openAndCloseLoginWrapper,
-    postCommentsBookstoore
+    postCommentsBookstoore,
+    openAndCloseMobileWrappers,
+    sumOfPrices
 } from './UIModule.js'
 
 const apiBooks = 'https://www.googleapis.com/books/v1/volumes?q=with&printType=books&projection=full'
@@ -13,11 +15,11 @@ const apiBooks = 'https://www.googleapis.com/books/v1/volumes?q=with&printType=b
 fetch(apiBooks).then((data) => {
     return data.json()
 }).then((data) => {
-    console.log(booksArr(data))
     createBookGrid(booksArr(data))
-        bookInfoDisplay()
-        openAndCloseCartWrapper()
-        openAndCloseLoginWrapper()
-        postCommentsBookstoore()
+    bookInfoDisplay()
+    openAndCloseCartWrapper()
+    openAndCloseLoginWrapper()
+    postCommentsBookstoore()
+    openAndCloseMobileWrappers()
+    sumOfPrices()
 })
-

@@ -1,35 +1,131 @@
-const homeIcon = document.querySelector('.home-icon')
-const info = document.querySelector('.info')
-homeIcon.addEventListener('click', () => {
-    info.classList.toggle('block')
-})
+const openAndCloseMobileWrappers = () => {
 
-const loginIcon = document.querySelector('.login-icon')
-const login = document.querySelector('.login-wrapper')
-loginIcon.addEventListener('click', () => {
-    login.classList.toggle('block')
-})
+    const info = document.querySelector('.info')
+    const comments = document.querySelector('.comments')
+    const homeIcon = document.querySelector('.home-icon')
+    const commentsIcon = document.querySelector('.comments-icon')
+    const mobileIconsI = document.querySelectorAll('.mobile-iconsI')
+    const mobileWrappers = document.querySelectorAll('.mobile-wrappers')
+    let whichIsClicked = undefined
+    let resize = undefined
+    const cartWrapper = document.querySelector('.cart-wrapper')
+    const loginWrapper = document.querySelector('.login-wrapper')
+    const loginComp = document.querySelector('.login')
+    const cartComp = document.querySelector('.cart')
+    const close = document.querySelectorAll('.close')
+    const closeCart = document.querySelector('.cart-wrapper .close')
+    const closeLogin = document.querySelector('.login-wrapper .close')
+    const loginBackground = document.querySelector('.login-background')
 
-const comments = document.querySelector('.comments')
-const commentsIcon = document.querySelector('.comments-icon')
+    for (let i = 0; i < mobileWrappers.length; i++) {
 
-commentsIcon.addEventListener('click', () => {
-    comments.classList.toggle('block')
-})
+        (function (i) {
 
-const cartWrapper = document.querySelector('.cart-wrapper')
-const cartIcon = document.querySelector('.cart-icon')
+            mobileIconsI[i].addEventListener('click', () => {
+                // console.log(this)  sto je ovo thiis undefined???
+                for (let j = 0; j < mobileWrappers.length; j++) {
+                    if (mobileIconsI[i] == mobileIconsI[j]) {
+                        mobileWrappers[j].style.display = 'block'
+                        whichIsClicked = j
+                    } else {
+                        mobileWrappers[j].style.display = 'none'
+                    }
+                }
+            })
 
-cartIcon.addEventListener('click', () => {
-    cartWrapper.classList.toggle('block')
-})
+        })(i)
 
-const search = document.querySelector('header input')
-const searchOutput = document.querySelector('.search-output')
+    }
 
-search.addEventListener('keydown', () => {
-    searchOutput.classList.toggle('block')
-})
+    for (let i = 0; i < close.length; i++) {
+        (function (i) {
+            close[i].addEventListener('click', () => {
+                if (i == 1 && resize >= 992) { // loginWrapper na > 992 prikazu
+                    loginWrapper.style.top = '35%'
+                    setTimeout(() => {
+                        loginWrapper.style.display = 'none'
+                        loginBackground.style.display = 'none'
+                    }, 401)
+                } else {
+                    mobileWrappers[i].style.display = 'none'
+                    loginBackground.style.display = 'none'
+                }
+                whichIsClicked = undefined
+            })
+        })(i)
+    }
+
+    // da prebacuje kliknuti wrapper    > 992       u     < 992
+    window.addEventListener('click', (e) => {
+        if (resize >= 992) {
+            if (e.target.closest('.cart') != cartComp || e.target.closest('.cart-wrapper') != cartWrapper || e.target.closest('.login') != loginComp || e.target.closest('.login-wrapper') != loginWrapper) {
+                whichIsClicked = undefined
+            }
+            if (e.target.closest('.cart') == cartComp || e.target.closest('.cart-wrapper') == cartWrapper && e.target.closest('.cart-wrapper .close') != closeCart) {
+                whichIsClicked = 2
+            }
+            if (e.target.closest('.login') == loginComp || e.target.closest('.login-wrapper') == loginWrapper && e.target.closest('.login-wrapper .close') != closeLogin) {
+                whichIsClicked = 1
+            }
+        }
+        if (resize < 992) {
+            if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon) {
+                info.style.display = 'none'
+                whichIsClicked = undefined
+            }
+
+            if (e.target.closest('.comments') != comments && e.target.closest('.comments-icon') != commentsIcon) {
+                comments.style.display = 'none'
+                whichIsClicked = undefined
+            }
+        }
+    })
+
+    let changeBiggerThen992 = true //da ne display-uje stalno na  vecem prikazu od 992  wrapper kliknutog icon-a prilikom resize-a
+    let changeLessThen992 = true
+
+    window.addEventListener('resize', () => {
+        resize = window.innerWidth
+
+        console.log(whichIsClicked)
+
+        if (window.innerWidth >= 992) {
+            if (changeBiggerThen992 && whichIsClicked != undefined) {
+                mobileWrappers[whichIsClicked].style.display = 'block'
+                changeBiggerThen992 = false
+            }
+            info.style.display = 'block' // zbog dizajnu treba stalno biti block
+            comments.style.display = 'block' // zbog dizajna treba stalno bitti block
+            changeLessThen992 = true
+        } else {
+
+            if (whichIsClicked == undefined) {
+                for (let i = 0; i < mobileWrappers.length; i++) {
+                    mobileWrappers[i].style.display = 'none'
+                }
+            } else {
+                if (changeLessThen992 == true) {
+                    for (let i = 0; i < mobileWrappers.length; i++) {
+                        mobileWrappers[i].style.display = 'none'
+                    }
+                    mobileWrappers[whichIsClicked].style.display = 'block'
+                    changeLessThen992 = false
+                }
+            }
+            changeBiggerThen992 = true
+        }
+
+    })
+
+
+
+    const search = document.querySelector('header input')
+    const searchOutput = document.querySelector('.search-output')
+
+    search.addEventListener('keydown', () => {
+        searchOutput.classList.toggle('block')
+    })
+}
 
 
 
@@ -191,7 +287,6 @@ const bookInfoDisplay = () => {
     const bookCardGrid = document.querySelectorAll('.book-card-grid')
     const bookCardInfo = document.querySelectorAll('.book-card-info')
     const bookCardGridBackground = document.querySelectorAll('.book-card-grid-background')
-    console.log(bookCardGrid, bookCardInfo, bookCardGridBackground)
     for (let i = 0; i < bookCardGrid.length; i++) {
         (function (i) {
             bookCardGrid[i].addEventListener('mouseover', () => {
@@ -212,25 +307,24 @@ const openAndCloseCartWrapper = () => {
     const cartComp = document.querySelector('.cart')
     const closeCart = document.querySelector('.cart-wrapper .close')
     const cartWrapper = document.querySelector('.cart-wrapper')
+    const cartIcon = document.querySelector('.cart-icon')
+    // const cartI = document.querySelector('.fa-shopping-cart')
 
     cartComp.addEventListener('click', () => {
         cartWrapper.style.display = 'block'
     })
 
-    closeCart.addEventListener('click', () => {
-        cartWrapper.style.display = 'none'
-    })
+    // closeCart.addEventListener('click', () => {
+    //     cartWrapper.style.display = 'none'
+    // })
 
     const closeCartWrapper = (e) => {
-        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp) {
+        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.cart-icon') != cartIcon) {
             cartWrapper.style.display = 'none'
         }
     }
-    if (window.innerWidth >= 992) {
-        window.addEventListener('click', closeCartWrapper)
-    } else {
-        window.removeEventListener('click', closeCartWrapper)
-    }
+
+    window.addEventListener('click', closeCartWrapper)
 
 }
 
@@ -240,35 +334,70 @@ const openAndCloseLoginWrapper = () => {
     const loginBackground = document.querySelector('.login-background')
     const loginComp = document.querySelector('.login')
     const loginClose = document.querySelector('.login-wrapper .close')
+    const loginIcon = document.querySelector('.login-icon')
 
-    loginComp.addEventListener('click', () => {
-        loginWrapper.style.display = 'block'
-        loginBackground.style.display = 'block'
-        setTimeout(() => {
+    // loginIcon.addEventListener('click', () => {
+    //     if (loginWrapper.style.display == 'none') {
+    //         loginWrapper.style.display = 'block'
+    //         loginBackground.style.display = 'block'
+    //     } else {
+    //         loginWrapper.style.display = 'none'
+    //         loginBackground.style.display = 'none'
+    //     }
+    // })
+
+    // loginComp.addEventListener('click', () => {
+    //     loginWrapper.style.display = 'block'
+    //     loginBackground.style.display = 'block'
+    //     setTimeout(() => {
+    //         loginWrapper.style.top = '50%'
+    //     }, 10)
+    // })
+
+
+    // const closingLogin = () => {
+    //     if (window.innerWidth >= 992) {
+    //         loginWrapper.style.top = '35%'
+    //         setTimeout(() => {
+    //             loginWrapper.style.display = 'none'
+    //             loginBackground.style.display = 'none'
+    //         }, 401)
+    //     } else {
+    //         loginWrapper.style.display = 'none'
+    //         loginBackground.style.display = 'none'
+    //     }
+    // }
+
+    // loginClose.addEventListener('click', closingLogin)
+
+    // const closeLoginWrapperComp = (e) => {
+    //     if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login') != loginComp && e.target.closest('.login-icon') != loginIcon) {
+    //         if (window.innerWidth >= 992) {
+    //             loginWrapper.style.top = '35%'
+    //             setTimeout(() => {
+    //                 loginWrapper.style.display = 'none'
+    //                 loginBackground.style.display = 'none'
+    //             }, 401)
+    //         } else {
+    //             loginWrapper.style.display = 'none'
+    //             loginBackground.style.display = 'none'
+    //         }
+    //     }
+    // }
+
+    // window.addEventListener('click', closeLoginWrapperComp)
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 992) {
             loginWrapper.style.top = '50%'
-        }, 10)
-    })
-
-    loginClose.addEventListener('click', () => {
-        loginWrapper.style.top = '35%'
-        setTimeout(() => {
-            loginWrapper.style.display = 'none'
-            loginBackground.style.display = 'none'
-        }, 401)
-    })
-
-    const closeLoginWrapperComp = (e) => {
-        if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login') != loginComp) {
-            loginWrapper.style.display = 'none'
-            loginBackground.style.display = 'none'
+            loginWrapper.style.left = '50%'
+        } else {
+            loginWrapper.style.top = '0'
+            loginWrapper.style.left = '0'
+            loginWrapper.style.right = '0'
+            loginWrapper.style.bottom = '50px'
         }
-    }
-
-    if (window.innerWidth >= 992) {
-        window.addEventListener('click', closeLoginWrapperComp)
-    } else {
-        windown.removeEventListener('click', closeLoginWrapperComp)
-    }
+    })
 
 }
 
@@ -326,11 +455,79 @@ const postCommentsBookstoore = () => {
 //     }
 // }
 
+const sumOfPrices = (e) => {
+    const carts = document.querySelectorAll('.fa-shopping-cart:not(last)')
+    const cartWrapper = document.querySelector('.cart-wrapper')
+    const cartCard = document.getElementsByClassName('cart-card')
+    const cartCardsTitle = document.getElementsByClassName('cart-card-title')
+    const cartCardCounter = document.getElementsByClassName('cart-card-counter')
+    const cartCardPrice = document.getElementsByClassName('cart-card-price')
+    const noOfBooks = document.querySelector('.no-of-books')
+    const total = document.querySelector('.total > span')
+    const totalComp = document.querySelector('.i-total-comp')
+    const bookCardsTitle = document.querySelectorAll('.book-title-grid a')
+    const bookCardsImg = document.querySelectorAll('.book-card-grid > img')
+    const bookCardsPrice = document.querySelectorAll('.book-price-grid')
+
+    for (let i = 0; i < carts.length; i++) {
+
+        (function (i) {
+            carts[i].addEventListener('click', () => {
+
+                for (let j = 0; j < cartCardsTitle.length; j++) {
+                    if (bookCardsTitle[i].textContent == cartCardsTitle[j].textContent) {
+                        console.log(total.textContent, cartCardPrice[cartCardPrice.length - 1].textContent + 'EXIST')
+
+                        cartCardCounter[j].textContent = parseFloat(cartCardCounter[j].textContent) + 1
+
+                        total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[j].textContent)).toFixed(2)
+                        return
+                    }
+                }
+                let cartCardDiv = document.createElement('div')
+                cartCardDiv.setAttribute('class', 'cart-card')
+
+                let img = document.createElement('img')
+                img.setAttribute('src', bookCardsImg[i].src)
+                cartCardDiv.append(img)
+
+                let p = document.createElement('p')
+                p.setAttribute('class', 'cart-card-title')
+                let pText = document.createTextNode(bookCardsTitle[i].textContent)
+                p.append(pText)
+                cartCardDiv.append(p)
+
+                let div = document.createElement('div')
+                let p1 = document.createElement('p')
+                p1.setAttribute('class', 'cart-card-counter')
+                let p1text = document.createTextNode('1')
+                p1.append(p1text)
+                div.append(p1)
+                let p2 = document.createElement('p')
+                p2.setAttribute('class', 'cart-card-price')
+                let p2Text = document.createTextNode(bookCardsPrice[i].textContent)
+                p2.append(p2Text)
+                div.append(p2)
+                cartCardDiv.append(div)
+                cartWrapper.append(cartCardDiv)
+                console.log(total.textContent, cartCardPrice[cartCardPrice.length - 1].textContent + 'new')
+                total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[cartCardPrice.length - 1].textContent)).toFixed(2)
+                noOfBooks.textContent = 'No. of books: ' + cartCard.length
+
+            })
+
+        })(i)
+    }
+}
+
+
 
 export {
     createBookGrid,
     bookInfoDisplay,
     openAndCloseCartWrapper,
     openAndCloseLoginWrapper,
-    postCommentsBookstoore
+    postCommentsBookstoore,
+    openAndCloseMobileWrappers,
+    sumOfPrices
 }

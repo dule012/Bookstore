@@ -541,6 +541,7 @@ label {
     float: left;
     background-color: #add8e6;
     z-index: 3;
+    cursor: pointer;
 }
 
 .home-icon i,
@@ -1499,7 +1500,7 @@ label {
     .login-wrapper {
         padding-top: 0;
         padding: 2vw;
-        top: 35%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 50%;
