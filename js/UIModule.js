@@ -122,9 +122,9 @@ const openAndCloseMobileWrappers = () => {
     const search = document.querySelector('header input')
     const searchOutput = document.querySelector('.search-output')
 
-    search.addEventListener('keydown', () => {
-        searchOutput.classList.toggle('block')
-    })
+    // search.addEventListener('keydown', () => {
+    //     searchOutput.classList.toggle('block')
+    // })
 }
 
 
@@ -239,13 +239,19 @@ const createBookGrid = (arr) => {
         let pRatingText = document.createTextNode('rating')
         pRating.append(pRatingText)
         divStarWrapperGrid.append(pRating)
+
         if (el.averageRating != undefined) {
+
             for (let j = 0; j < 5; j++) {
+
                 if (j < Math.floor(el.averageRating)) {
+
                     let iStarYellow = document.createElement('i')
                     iStarYellow.setAttribute('class', 'fa fa-star yellow')
                     divStarWrapperGrid.append(iStarYellow)
+
                 } else {
+
                     let iStarGrey = document.createElement('i')
                     iStarGrey.setAttribute('class', 'fa fa-star grey')
                     divStarWrapperGrid.append(iStarGrey)
@@ -436,54 +442,59 @@ const postCommentsBookstoore = () => {
         }
     })
 }
-// const bookmarkIconChangeColor = () => {
-//     const bookmarkIconWrapperList = document.querySelectorAll('.bookmark-icon-wrapper-list')
-//     const bookmarkIconWrapperList_i = document.querySelectorAll('.bookmark-icon-wrapper-list')
-//     for (let i = 0; i < bookmarkIconWrapperList.lenght; i++) {
-//         (function (i) {
-//             bookmarkIconWrapperList[i].addEventListener('mousemove', (i) => {
-//                 bookmarkIconWrapperList[i].style.backgroundColor = 'black'
-//                 bookmarkIconWrapperList_i[i].style.color = 'white'
-//             })
-//         })(i)
-//         (function (i) {
-//             bookmarkIconWrapperList[i].addEventListener('mouseover', (i) => {
-//                 bookmarkIconWrapperList[i].style.backgroundColor = 'wihte'
-//                 bookmarkIconWrapperList_i[i].style.color = 'black'
-//             })
-//         })()
-//     }
-// }
+const bookmarkIconChangeColor = () => {
+    const bookmarkIconWrapperList = document.querySelectorAll('.bookmark-icon-wrapper-list')
+    const bookmarkIconWrapperList_i = document.querySelectorAll('.bookmark-icon-wrapper-list > i')
 
-const sumOfPrices = (e) => {
+    for (let i = 0; i < bookmarkIconWrapperList.length; i++) {
+
+        (function (i) {
+
+            bookmarkIconWrapperList[i].addEventListener('mouseover', () => {
+                bookmarkIconWrapperList[i].style.backgroundColor = 'black'
+                bookmarkIconWrapperList_i[i].style.color = 'white'
+            })
+
+            bookmarkIconWrapperList[i].addEventListener('mouseout', () => {
+                bookmarkIconWrapperList[i].style.backgroundColor = 'white'
+                bookmarkIconWrapperList_i[i].style.color = 'black'
+            })
+
+        })(i)
+    }
+}
+
+const sumOfPricesAndCreateCartCard = (e) => {
     const carts = document.querySelectorAll('.fa-shopping-cart:not(last)')
     const cartWrapper = document.querySelector('.cart-wrapper')
     const cartCard = document.getElementsByClassName('cart-card')
     const cartCardsTitle = document.getElementsByClassName('cart-card-title')
     const cartCardCounter = document.getElementsByClassName('cart-card-counter')
     const cartCardPrice = document.getElementsByClassName('cart-card-price')
-    const noOfBooks = document.querySelector('.no-of-books')
+    const noOfBooks = document.querySelector('.no-of-books > span')
     const total = document.querySelector('.total > span')
-    const totalComp = document.querySelector('.i-total-comp')
-    const bookCardsTitle = document.querySelectorAll('.book-title-grid a')
+    const totalComp = document.querySelector('.i-total-comp > i')
+    const bookCardsTitle = document.querySelectorAll('.book-title-grid > a ')
     const bookCardsImg = document.querySelectorAll('.book-card-grid > img')
     const bookCardsPrice = document.querySelectorAll('.book-price-grid')
+    const iX = document.getElementsByClassName('delete-cart-card')
 
     for (let i = 0; i < carts.length; i++) {
 
         (function (i) {
             carts[i].addEventListener('click', () => {
-
+                // Find existing cart card in cartWrapper and suming it in total
                 for (let j = 0; j < cartCardsTitle.length; j++) {
                     if (bookCardsTitle[i].textContent == cartCardsTitle[j].textContent) {
-                        console.log(total.textContent, cartCardPrice[cartCardPrice.length - 1].textContent + 'EXIST')
 
                         cartCardCounter[j].textContent = parseFloat(cartCardCounter[j].textContent) + 1
 
                         total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[j].textContent)).toFixed(2)
+                        totalComp.textContent = total.textContent
                         return
                     }
                 }
+                // Create Cart Cards
                 let cartCardDiv = document.createElement('div')
                 cartCardDiv.setAttribute('class', 'cart-card')
 
@@ -508,26 +519,306 @@ const sumOfPrices = (e) => {
                 let p2Text = document.createTextNode(bookCardsPrice[i].textContent)
                 p2.append(p2Text)
                 div.append(p2)
+                let iDelete = document.createElement('i')
+                iDelete.className = 'fa delete-cart-card'
+                iDelete.innerHTML = '&#xf00d;'
+                div.append(iDelete)
                 cartCardDiv.append(div)
                 cartWrapper.append(cartCardDiv)
-                console.log(total.textContent, cartCardPrice[cartCardPrice.length - 1].textContent + 'new')
+                // Suming in total  for new cart card
                 total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[cartCardPrice.length - 1].textContent)).toFixed(2)
-                noOfBooks.textContent = 'No. of books: ' + cartCard.length
-
+                totalComp.textContent = total.textContent
+                noOfBooks.textContent = cartCard.length
+                //             Delete Cart Cards
+                iX[iX.length - 1].addEventListener('click', (e) => {
+                    for (let k = 0; k < cartCard.length; k++) {
+                        if (e.target.closest('.cart-card') == cartCard[k]) {
+                            total.textContent = (parseFloat(total.textContent) - (parseFloat(cartCardCounter[k].textContent) * parseFloat(cartCardPrice[k].textContent))).toFixed(2)
+                            totalComp.textContent = total.textContent
+                            noOfBooks.textContent = parseFloat(noOfBooks.textContent) - 1
+                            cartCard[k].remove()
+                        }
+                    }
+                })
             })
 
         })(i)
     }
+
 }
 
 
+const createBookmarkCardandDelete = () => {
+    const bookmarksWrapper = document.querySelector('.bookmarks-wrapper')
+    const bookmarkWrapperGrid = document.querySelectorAll('.bookmark-icon-wrapper-grid')
+    const bookmarkTitle = document.getElementsByClassName('bookmark-title-a')
+    const bookmarksCard = document.getElementsByClassName('bookmarks-card')
+    const bookCard = document.querySelectorAll('.book-card-grid')
+    const bookCardsTitle = document.querySelectorAll('.book-title-grid > a')
+    const bookCardsAuthor = document.querySelectorAll('.book-author-grid > a')
+    const iDelete = document.getElementsByClassName('delete-bookmark-card')
+
+    for (let i = 0; i < bookmarkWrapperGrid.length; i++) {
+
+        (function (i) { // ?????????????????????????????????????????????????????????? Zasto i je undefined NEVEROVATNO!
+            let a = i
+            bookmarkWrapperGrid[i].addEventListener('click', () => {
+                for (let j = 0; j < bookmarkTitle.length; j++) {
+                    if (bookCardsTitle[a].textContent == bookmarkTitle[j].textContent) {
+                        return
+                    }
+                }
+                let div = document.createElement('div')
+                div.setAttribute('class', 'bookmarks-card')
+                div.setAttribute('key', bookCard[a].getAttribute('key'))
+
+                let p1 = document.createElement('p')
+                p1.setAttribute('class', 'bookmarks-title')
+                let a1 = document.createElement('a')
+                a1.setAttribute('href', './bookInfo.html')
+                a1.setAttribute('class', 'bookmark-title-a')
+                let a1t = document.createTextNode(bookCardsTitle[a].textContent)
+                a1.append(a1t)
+                p1.append(a1)
+                div.append(p1)
+                let p2 = document.createElement('p')
+                p2.setAttribute('class', 'bookmarks-author')
+                let a2 = document.createElement('a')
+                let a2t = document.createTextNode(bookCardsAuthor[a].textContent)
+                a2.append(a2t)
+                p2.append(a2)
+                div.append(p2)
+                let i = document.createElement('i')
+                i.className = 'fa  delete-bookmark-card'
+                i.innerHTML = '&#xf00d;'
+                div.append(i)
+                bookmarksWrapper.append(div)
+
+                iDelete[iDelete.length - 1].addEventListener('click', (еvenet) => {
+                    for (let k = 0; k < iDelete.length; k++) {
+                        if (event.target.closest('.bookmarks-card') == bookmarksCard[k]) {
+                            bookmarksCard[k].remove()
+                        }
+                    }
+                })
+            })
+
+        })(i)
+    }
+
+}
+
+const createBookList = (arr) => {
+    const container = document.querySelector('.container')
+
+    arr.forEach((el) => {
+
+        let div = document.createElement('div')
+        div.setAttribute('class', 'book-card-list')
+        div.setAttribute('key', el.id)
+
+        let img = document.createElement('img')
+        img.setAttribute('src', el.smallThumbnail)
+        div.append(img)
+
+        let p1 = document.createElement('p')
+        p1.setAttribute('class', 'book-title-list')
+        let a1 = document.createElement('a')
+        a1.setAttribute('href', './bookInfo.html')
+        if (el.title.length > 49) {
+            let a1t = document.createTextNode(el.title.slice(0, 40) + '...')
+            a1.append(a1t)
+        } else {
+            let a1t = document.createTextNode(el.title)
+            a1.append(a1t)
+        }
+        p1.append(a1)
+        div.appendChild(p1)
+
+        let p2 = document.createElement('p')
+        p2.setAttribute('class', 'book-author-list')
+        let a2 = document.createElement('a')
+        a2.setAttribute('href', './bookInfo.html')
+        let a2t = document.createTextNode(el.author)
+        a2.append(a2t)
+        p2.appendChild(a2)
+        div.appendChild(p2)
+
+        let p3 = document.createElement('p')
+        p3.setAttribute('class', 'book-description-list')
+        let p3t = document.createTextNode(el.description.slice(0, el.description.indexOf(' ', 80)) + '...')
+        p3.appendChild(p3t)
+        div.appendChild(p3)
+
+        let divStar = document.createElement('div')
+        divStar.setAttribute('class', 'star-wrapper-list')
+        let counter = 0
+        if (el.averageRating != undefined) {
+
+            for (let i = 0; i < 5; i++) {
+
+                if (i < Math.floor(el.averageRating)) {
+
+                    let iy = document.createElement('i')
+                    iy.setAttribute('class', 'fa fa-star yellow')
+                    divStar.appendChild(iy)
+                } else {
+
+                    let ig = document.createElement('i')
+                    ig.setAttribute('class', 'fa fa-star grey')
+                    divStar.appendChild(ig)
+                }
+            }
+            div.appendChild(divStar)
+        }
+
+        let p4 = document.createElement('p')
+        p4.setAttribute('class', 'book-price-list')
+        let p4t = document.createTextNode(el.price + '$')
+        p4.appendChild(p4t)
+        div.appendChild(p4)
+
+        let p5 = document.createElement('p')
+        p5.setAttribute('class', 'book-cart-list')
+        let p5t = document.createTextNode('+')
+        p5.appendChild(p5t)
+        let i5 = document.createElement('i')
+        i5.className = 'fa fa-shopping-cart'
+        p5.appendChild(i5)
+        div.appendChild(p5)
+
+        let divBookamark = document.createElement('div')
+        divBookamark.setAttribute('class', 'bookmark-icon-wrapper-list')
+        let iBookmark = document.createElement('i')
+        iBookmark.className = 'fa bookmark-icon-list'
+        iBookmark.innerHTML = '&#xf097;'
+        divBookamark.appendChild(iBookmark)
+        div.appendChild(divBookamark)
+
+        container.appendChild(div)
+
+    })
+
+}
+
+
+const GridorListView = () => {
+    const grid = document.querySelector('.grid')
+    const list = document.querySelector('.list')
+    const booksGrid = document.querySelectorAll('.book-card-grid')
+    const booksList = document.querySelectorAll('.book-card-list')
+
+    grid.addEventListener('click', () => {
+        for (let i = 0; i < booksGrid.length; i++) {
+            booksGrid[i].style.display = 'block'
+            booksList[i].style.display = 'none'
+        }
+    })
+
+    list.addEventListener('click', () => {
+        for (let i = 0; i < booksList.length; i++) {
+            booksGrid[i].style.display = 'none'
+            booksList[i].style.display = 'block'
+        }
+    })
+}
+
+const searchingBooks = () => {
+    const input = document.querySelector('header > input')
+    const searchOutputWrapper = document.querySelector('.search-output')
+    const searchOutputCards = document.getElementsByClassName('search-output-card')
+    const container = document.querySelector('.container')
+
+    input.addEventListener('keydown', () => {
+
+        for (let i = 0; i < searchOutputCards.length; i++) {
+            searchOutputCards[i].remove()
+            i--
+        }
+
+
+        if (input.value.length >= 2) {
+
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${input.value}&printType=books&projection=full`)
+                .then((data) => {
+                    return data.json()
+                })
+                .then((data) => {
+                    let arr = data.items
+
+                    if (arr.length > 10) {
+                        arr.slice(0, 10)
+                    }
+
+                    searchOutputWrapper.style.display = 'block'
+
+                    arr.forEach((el) => {
+                        let div = document.createElement('div')
+                        div.setAttribute('class', 'search-output-card')
+                        div.setAttribute('key', el.id)
+
+                        let a = document.createElement('a')
+                        a.setAttribute('href', './bookInfo.html')
+
+                        let img = document.createElement('img')
+                        if (el.volumeInfo.imageLinks.smallThumbnail != undefined) {
+                            img.setAttribute('src', el.volumeInfo.imageLinks.smallThumbnail)
+                        }
+                        img.setAttribute('alt', 'No Image')
+                        a.appendChild(img)
+
+                        let aDiv = document.createElement('div')
+
+                        let p1 = document.createElement('p')
+                        if (el.volumeInfo.title.length > 45) {
+                            let p1t = document.createTextNode(el.volumeInfo.title.slice(0, 40) + '...')
+                            p1.appendChild(p1t)
+                        } else {
+
+                            let p1t = document.createTextNode(el.volumeInfo.title)
+                            p1.appendChild(p1t)
+                        }
+                        aDiv.appendChild(p1)
+
+                        let p2 = document.createElement('p')
+                        if (el.volumeInfo.authors != undefined) {
+                            let p2t = document.createTextNode(el.volumeInfo.authors[0] || el.volumeInfo.authors[1])
+                            p2.appendChild(p2t)
+                        }
+                        aDiv.appendChild(p2)
+
+                        a.appendChild(aDiv)
+
+                        div.appendChild(a)
+
+                        searchOutputWrapper.appendChild(div)
+                    })
+                })
+        } else {
+            searchOutputWrapper.style.display = 'none'
+        }
+    })
+
+    window.addEventListener('click', (e) => {
+        if (e.target.closest('.search-output') != searchOutputWrapper && e.target.closest('header > input') != input) {
+            searchOutputWrapper.style.display = 'none'
+        }
+    })
+
+}
 
 export {
     createBookGrid,
+    createBookList,
     bookInfoDisplay,
     openAndCloseCartWrapper,
     openAndCloseLoginWrapper,
     postCommentsBookstoore,
     openAndCloseMobileWrappers,
-    sumOfPrices
+    sumOfPricesAndCreateCartCard,
+    createBookmarkCardandDelete,
+    bookmarkIconChangeColor,
+    GridorListView,
+    searchingBooks
+
 }

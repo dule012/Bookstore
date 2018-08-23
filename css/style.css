@@ -28,7 +28,7 @@ body {
     left: 0;
     width: 100%;
     background-color: black;
-    z-index: 3;
+    z-index: 5;
     padding-top: 15px;
     overflow: auto;
 }
@@ -156,6 +156,7 @@ i.fa-search {
     left: 84%;
     font-size: 17px;
     color: #e1e7e5;
+    cursor: text;
 }
 
 .search-output {
@@ -387,7 +388,7 @@ div.book-card-grid {
     bottom: 40px;
     padding-top: 10px;
     background-color: #ddddda;
-    z-index: 3;
+    z-index: 5;
 }
 
 .comments .close {
@@ -564,7 +565,7 @@ label {
     right: 0;
     bottom: 40px;
     background-color: white;
-    z-index: 3;
+    z-index: 5;
     padding: 15px;
     overflow: auto;
 }
@@ -580,7 +581,7 @@ label {
     margin-right: 40px;
 }
 
-.cart-wrapper .close {
+.cart-wrapper i {
     position: absolute;
     top: 13px;
     right: 10px;
@@ -621,13 +622,17 @@ label {
     margin-bottom: 5px;
 }
 
-.cart-card .close {
+.cart-card i {
     position: absolute;
     top: 50%;
     right: -35px;
     transform: translate(0, -50%);
     font-size: 17px;
     color: black;
+}
+
+.fa-shopping-cart:hover:not(.i-cart-comp) {
+    transform: scale(1.4);
 }
 
 .yellow {
@@ -1019,7 +1024,7 @@ label {
         height: 14%;
         max-height: 200px;
         background-color: #fcfcfb;
-        z-index: 3;
+        z-index: 4;
     }
     header>p {
         position: absolute;
@@ -1273,17 +1278,6 @@ label {
     .star-wrapper-list i {
         font-size: 1.2vw;
     }
-    .star-wrapper-list i:nth-child(1),
-    .star-wrapper-list i:nth-child(2),
-    .star-wrapper-list i:nth-child(3) {
-        color: yellow;
-        cursor: none;
-    }
-    .star-wrapper-list i:nth-child(4),
-    .star-wrapper-list i:nth-child(5) {
-        color: grey;
-        cursor: none;
-    }
     .book-price-list {
         position: absolute;
         top: 0;
@@ -1378,7 +1372,7 @@ label {
     .i-cart-comp {
         position: absolute;
         top: 50%;
-        left: 10%;
+        left: 2%;
         transform: translate(0, -50%);
         color: white;
     }
@@ -1388,7 +1382,7 @@ label {
         right: 10%;
         transform: translate(0, -50%);
         color: white;
-        font-size: 1.2vw;
+        font-size: 1.1vw;
     }
     .login {
         position: absolute;
