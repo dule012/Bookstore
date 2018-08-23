@@ -632,7 +632,7 @@ label {
 }
 
 .fa-shopping-cart:hover:not(.i-cart-comp) {
-    transform: scale(1.4);
+    transform: scale(1.5);
 }
 
 .yellow {
@@ -1232,7 +1232,6 @@ label {
         font-size: 0.8vw;
     }
     .book-card-list {
-        display: block;
         width: 100%;
         height: 13vw;
         clear: both;

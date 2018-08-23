@@ -466,17 +466,30 @@ const bookmarkIconChangeColor = () => {
 
 const sumOfPricesAndCreateCartCard = (e) => {
     const carts = document.querySelectorAll('.fa-shopping-cart:not(last)')
+
     const cartWrapper = document.querySelector('.cart-wrapper')
+
     const cartCard = document.getElementsByClassName('cart-card')
     const cartCardsTitle = document.getElementsByClassName('cart-card-title')
     const cartCardCounter = document.getElementsByClassName('cart-card-counter')
     const cartCardPrice = document.getElementsByClassName('cart-card-price')
+
     const noOfBooks = document.querySelector('.no-of-books > span')
     const total = document.querySelector('.total > span')
     const totalComp = document.querySelector('.i-total-comp > i')
-    const bookCardsTitle = document.querySelectorAll('.book-title-grid > a ')
-    const bookCardsImg = document.querySelectorAll('.book-card-grid > img')
-    const bookCardsPrice = document.querySelectorAll('.book-price-grid')
+
+    const bookCardsTitleGrid = document.querySelectorAll('.book-title-grid > a ')
+    const bookCardsTitleList = document.querySelectorAll('.book-title-list > a')
+    const bookCardsTitleAll = [...bookCardsTitleGrid, ...bookCardsTitleList]
+
+    const bookCardsImgGrid = document.querySelectorAll('.book-card-grid > img')
+    const bookCardsImgList = document.querySelectorAll('.book-card-grid > img')
+    const bookCardsImgAll = [...bookCardsImgGrid, ...bookCardsImgList]
+
+    const bookCardsPriceGrid = document.querySelectorAll('.book-price-grid')
+    const bookCardsPriceList = document.querySelectorAll('.book-price-list')
+    const bookCardsPriceAll = [...bookCardsPriceGrid, ...bookCardsPriceList]
+
     const iX = document.getElementsByClassName('delete-cart-card')
 
     for (let i = 0; i < carts.length; i++) {
@@ -485,7 +498,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
             carts[i].addEventListener('click', () => {
                 // Find existing cart card in cartWrapper and suming it in total
                 for (let j = 0; j < cartCardsTitle.length; j++) {
-                    if (bookCardsTitle[i].textContent == cartCardsTitle[j].textContent) {
+                    if (bookCardsTitleAll[i].textContent == cartCardsTitle[j].textContent) {
 
                         cartCardCounter[j].textContent = parseFloat(cartCardCounter[j].textContent) + 1
 
@@ -499,12 +512,12 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 cartCardDiv.setAttribute('class', 'cart-card')
 
                 let img = document.createElement('img')
-                img.setAttribute('src', bookCardsImg[i].src)
+                img.setAttribute('src', bookCardsImgAll[i].src)
                 cartCardDiv.append(img)
 
                 let p = document.createElement('p')
                 p.setAttribute('class', 'cart-card-title')
-                let pText = document.createTextNode(bookCardsTitle[i].textContent)
+                let pText = document.createTextNode(bookCardsTitleAll[i].textContent)
                 p.append(pText)
                 cartCardDiv.append(p)
 
@@ -516,7 +529,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 div.append(p1)
                 let p2 = document.createElement('p')
                 p2.setAttribute('class', 'cart-card-price')
-                let p2Text = document.createTextNode(bookCardsPrice[i].textContent)
+                let p2Text = document.createTextNode(bookCardsPriceAll[i].textContent)
                 p2.append(p2Text)
                 div.append(p2)
                 let iDelete = document.createElement('i')
@@ -550,41 +563,55 @@ const sumOfPricesAndCreateCartCard = (e) => {
 
 const createBookmarkCardandDelete = () => {
     const bookmarksWrapper = document.querySelector('.bookmarks-wrapper')
+
     const bookmarkWrapperGrid = document.querySelectorAll('.bookmark-icon-wrapper-grid')
+    const bookmarkWrapperList = document.querySelectorAll('.bookmark-icon-wrapper-list')
+    const bookmarkWrapperAll = [...bookmarkWrapperGrid, ...bookmarkWrapperList]
+
     const bookmarkTitle = document.getElementsByClassName('bookmark-title-a')
     const bookmarksCard = document.getElementsByClassName('bookmarks-card')
-    const bookCard = document.querySelectorAll('.book-card-grid')
-    const bookCardsTitle = document.querySelectorAll('.book-title-grid > a')
-    const bookCardsAuthor = document.querySelectorAll('.book-author-grid > a')
+
+    const bookGrid = document.querySelectorAll('.book-card-grid')
+    const bookList = document.querySelectorAll('.book-card-list')
+    const bookCardAll = [...bookGrid, ...bookList]
+
+    const bookCardsTitleGrid = document.querySelectorAll('.book-title-grid > a')
+    const bookCardsTitleList = document.querySelectorAll('.book-title-list > a')
+    const bookCardsTitleAll = [...bookCardsTitleGrid, ...bookCardsTitleList]
+
+    const bookCardsAuthorGrid = document.querySelectorAll('.book-author-grid > a')
+    const bookCardsAuthorList = document.querySelectorAll('.book-author-list > a')
+    const bookCardsAuthorAll = [...bookCardsAuthorGrid, ...bookCardsAuthorList]
+
     const iDelete = document.getElementsByClassName('delete-bookmark-card')
 
-    for (let i = 0; i < bookmarkWrapperGrid.length; i++) {
+    for (let i = 0; i < bookmarkWrapperAll.length; i++) {
 
         (function (i) { // ?????????????????????????????????????????????????????????? Zasto i je undefined NEVEROVATNO!
             let a = i
-            bookmarkWrapperGrid[i].addEventListener('click', () => {
-                for (let j = 0; j < bookmarkTitle.length; j++) {
-                    if (bookCardsTitle[a].textContent == bookmarkTitle[j].textContent) {
+            bookmarkWrapperAll[i].addEventListener('click', () => {
+                for (let j = 0; j < bookmarksCard.length; j++) {
+                    if (bookCardsTitleAll[a].textContent == bookmarkTitle[j].textContent) {
                         return
                     }
                 }
                 let div = document.createElement('div')
                 div.setAttribute('class', 'bookmarks-card')
-                div.setAttribute('key', bookCard[a].getAttribute('key'))
+                div.setAttribute('key', bookCardAll[a].getAttribute('key'))
 
                 let p1 = document.createElement('p')
                 p1.setAttribute('class', 'bookmarks-title')
                 let a1 = document.createElement('a')
                 a1.setAttribute('href', './bookInfo.html')
                 a1.setAttribute('class', 'bookmark-title-a')
-                let a1t = document.createTextNode(bookCardsTitle[a].textContent)
+                let a1t = document.createTextNode(bookCardsTitleAll[a].textContent)
                 a1.append(a1t)
                 p1.append(a1)
                 div.append(p1)
                 let p2 = document.createElement('p')
                 p2.setAttribute('class', 'bookmarks-author')
                 let a2 = document.createElement('a')
-                let a2t = document.createTextNode(bookCardsAuthor[a].textContent)
+                let a2t = document.createTextNode(bookCardsAuthorAll[a].textContent)
                 a2.append(a2t)
                 p2.append(a2)
                 div.append(p2)
@@ -626,7 +653,7 @@ const createBookList = (arr) => {
         let a1 = document.createElement('a')
         a1.setAttribute('href', './bookInfo.html')
         if (el.title.length > 49) {
-            let a1t = document.createTextNode(el.title.slice(0, 40) + '...')
+            let a1t = document.createTextNode(el.title.slice(0, 35) + '...')
             a1.append(a1t)
         } else {
             let a1t = document.createTextNode(el.title)
@@ -736,21 +763,16 @@ const searchingBooks = () => {
             i--
         }
 
-
         if (input.value.length >= 2) {
 
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=${input.value}&printType=books&projection=full`)
+            searchOutputWrapper.style.display = 'block'
+
+            fetch(`https://www.googleapis.com/books/v1/volumes?q=${input.value}&printType=books&projection=full&maxResults=15`)
                 .then((data) => {
                     return data.json()
                 })
                 .then((data) => {
                     let arr = data.items
-
-                    if (arr.length > 10) {
-                        arr.slice(0, 10)
-                    }
-
-                    searchOutputWrapper.style.display = 'block'
 
                     arr.forEach((el) => {
                         let div = document.createElement('div')
@@ -771,7 +793,7 @@ const searchingBooks = () => {
 
                         let p1 = document.createElement('p')
                         if (el.volumeInfo.title.length > 45) {
-                            let p1t = document.createTextNode(el.volumeInfo.title.slice(0, 40) + '...')
+                            let p1t = document.createTextNode(el.volumeInfo.title.slice(0, 35) + '...')
                             p1.appendChild(p1t)
                         } else {
 
