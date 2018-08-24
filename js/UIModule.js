@@ -38,10 +38,10 @@ const openAndCloseMobileWrappers = () => {
                 for (let j = 0; j < mobileWrappers.length; j++) {
                     // toggle za mobile ikonice
                     if (mobileIconsI[i] == mobileIconsI[j]) {
-                        if (mobileWrappers[j].style.display == 'none') {
-                            mobileWrappers[j].style.display = 'block'
-                        } else {
+                        if (mobileWrappers[j].style.display == 'block') {
                             mobileWrappers[j].style.display = 'none'
+                        } else {
+                            mobileWrappers[j].style.display = 'block'
                         }
                         whichIsClicked = j
                     } else {
@@ -53,6 +53,11 @@ const openAndCloseMobileWrappers = () => {
         })(i)
 
     }
+
+    loginComp.addEventListener('click', () => {
+        loginWrapper.style.display = 'block'
+        loginBackground.style.display = 'block'
+    })
 
     for (let i = 0; i < close.length; i++) {
         (function (i) {
@@ -72,7 +77,7 @@ const openAndCloseMobileWrappers = () => {
         })(i)
     }
 
-    // da prebacuje kliknuti wrapper    > 992       u     < 992
+    //da gasim klikom van wrappera i pronadjem kliknuti wrapper koji ce se dislay-ovati na resize
     window.addEventListener('click', (e) => {
         // ovo je potrebno zato sto postoji listener u drugoj f-ji za brisanje cartCards i ovde mi uvek update-uje niz deleteCartCard posle izvrsenja tj brisanja cartCard-a
         const clickedCart = () => {
@@ -128,22 +133,26 @@ const openAndCloseMobileWrappers = () => {
                 info.style.display = 'none'
             }
         }
-        console.log(whichIsClicked, 'which is clicked')
+        console.log(whichIsClicked)
 
         if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
             loginWrapper.style.display = 'none'
+            loginBackground.style.display = 'none'
         }
 
-        if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon) {
-            cartWrapper.style.dispaly = 'none'
+        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon && e.target.closest('.delete-cart-card') != clickedX()) {
+            cartWrapper.style.display = 'none'
         }
 
 
     })
 
+
+
     let changeBiggerThen992 = true //da ne display-uje stalno na  vecem prikazu od 992  wrapper kliknutog icon-a prilikom resize-a
     let changeLessThen992 = true
 
+    // da prebacuje kliknuti wrapper    > 992       u     < 992
     window.addEventListener('resize', () => {
         resize = window.innerWidth
 
@@ -161,25 +170,25 @@ const openAndCloseMobileWrappers = () => {
 
         } else {
 
-            if (whichIsClicked == undefined) {
-                for (let i = 0; i < mobileWrappers.length; i++) {
+            for (let i = 0; i < mobileWrappers.length; i++) {
+                if (whichIsClicked == undefined) {
                     mobileWrappers[i].style.display = 'none'
+                } else {
+                    info.style.display = 'none'
+                    comments.style.display = 'none'
                 }
-            } else {
 
-                if (changeLessThen992 && whichIsClicked != undefined) {
-                    mobileWrappers[whichIsClicked].style.display = 'block'
-                }
-                changeLessThen992 = false
-
-                for (let i = 0; i < mobileWrappers.length; i++) {
-                    mobileWrappers[i].style.display = 'none'
-                }
             }
 
-            changeBiggerThen992 = true
-        }
+            if (changeLessThen992 && whichIsClicked != undefined) {
+                mobileWrappers[whichIsClicked].style.display = 'block'
+            }
 
+
+            changeLessThen992 = false
+            changeBiggerThen992 = true
+
+        }
     })
 
     cartComp.addEventListener('click', () => {
@@ -367,79 +376,6 @@ const bookInfoDisplay = () => {
     }
 }
 
-
-const openAndCloseLoginWrapper = () => {
-
-    const loginWrapper = document.querySelector('.login-wrapper')
-    const loginBackground = document.querySelector('.login-background')
-    const loginComp = document.querySelector('.login')
-    const loginClose = document.querySelector('.login-wrapper .close')
-    const loginIcon = document.querySelector('.login-icon')
-
-    // loginIcon.addEventListener('click', () => {
-    //     if (loginWrapper.style.display == 'none') {
-    //         loginWrapper.style.display = 'block'
-    //         loginBackground.style.display = 'block'
-    //     } else {
-    //         loginWrapper.style.display = 'none'
-    //         loginBackground.style.display = 'none'
-    //     }
-    // })
-
-    // loginComp.addEventListener('click', () => {
-    //     loginWrapper.style.display = 'block'
-    //     loginBackground.style.display = 'block'
-    //     setTimeout(() => {
-    //         loginWrapper.style.top = '50%'
-    //     }, 10)
-    // })
-
-
-    // const closingLogin = () => {
-    //     if (window.innerWidth >= 992) {
-    //         loginWrapper.style.top = '35%'
-    //         setTimeout(() => {
-    //             loginWrapper.style.display = 'none'
-    //             loginBackground.style.display = 'none'
-    //         }, 401)
-    //     } else {
-    //         loginWrapper.style.display = 'none'
-    //         loginBackground.style.display = 'none'
-    //     }
-    // }
-
-    // loginClose.addEventListener('click', closingLogin)
-
-    // const closeLoginWrapperComp = (e) => {
-    //     if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login') != loginComp && e.target.closest('.login-icon') != loginIcon) {
-    //         if (window.innerWidth >= 992) {
-    //             loginWrapper.style.top = '35%'
-    //             setTimeout(() => {
-    //                 loginWrapper.style.display = 'none'
-    //                 loginBackground.style.display = 'none'
-    //             }, 401)
-    //         } else {
-    //             loginWrapper.style.display = 'none'
-    //             loginBackground.style.display = 'none'
-    //         }
-    //     }
-    // }
-
-    // window.addEventListener('click', closeLoginWrapperComp)
-
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 992) {
-            loginWrapper.style.top = '50%'
-            loginWrapper.style.left = '50%'
-        } else {
-            loginWrapper.style.top = '0'
-            loginWrapper.style.left = '0'
-            loginWrapper.style.right = '0'
-            loginWrapper.style.bottom = '50px'
-        }
-    })
-
-}
 
 const postCommentsBookstoore = () => {
     const input = document.querySelector('.leaving-comments input')
@@ -880,7 +816,6 @@ export {
     createBookGrid,
     createBookList,
     bookInfoDisplay,
-    openAndCloseLoginWrapper,
     postCommentsBookstoore,
     openAndCloseMobileWrappers,
     sumOfPricesAndCreateCartCard,

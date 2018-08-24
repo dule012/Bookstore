@@ -3,7 +3,6 @@ import {
     createBookGrid,
     createBookList,
     bookInfoDisplay,
-    openAndCloseLoginWrapper,
     postCommentsBookstoore,
     openAndCloseMobileWrappers,
     sumOfPricesAndCreateCartCard,
@@ -21,7 +20,6 @@ fetch(apiBooks).then((data) => {
     createBookGrid(booksArr(data))
     createBookList(booksArr(data))
     bookInfoDisplay()
-    openAndCloseLoginWrapper()
     postCommentsBookstoore()
     openAndCloseMobileWrappers()
     sumOfPricesAndCreateCartCard()
