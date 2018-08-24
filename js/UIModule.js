@@ -23,6 +23,10 @@ const openAndCloseMobileWrappers = () => {
     const closeCart = document.querySelector('.cart-wrapper .close')
     const closeLogin = document.querySelector('.login-wrapper .close')
 
+    const deleteCartCard = document.getElementsByClassName('delete-cart-card')
+    let X = 0
+    const shoppingCart = document.querySelectorAll('.fa-shopping-cart:not(.i-cart-comp)')
+
     const loginBackground = document.querySelector('.login-background')
 
     for (let i = 0; i < mobileWrappers.length; i++) {
@@ -70,6 +74,29 @@ const openAndCloseMobileWrappers = () => {
 
     // da prebacuje kliknuti wrapper    > 992       u     < 992
     window.addEventListener('click', (e) => {
+        // ovo je potrebno zato sto postoji listener u drugoj f-ji za brisanje cartCards i ovde mi uvek update-uje niz deleteCartCard posle izvrsenja tj brisanja cartCard-a
+        const clickedCart = () => {
+            for (let i = 0; i < shoppingCart.length; i++) {
+                if (e.target.closest('.fa-shopping-cart') == shoppingCart[i]) {
+                    return shoppingCart[i]
+                }
+            }
+            return 1 // zbog donjeg if-a jer vraca null == undefined => true i uvek i update-uje niz sto ne treba
+        }
+
+        if (e.target.closest('.fa-shopping-cart') == clickedCart()) {
+            X = [...deleteCartCard]
+        }
+
+        const clickedX = () => {
+            for (let i = 0; i < X.length; i++) {
+                if (e.target.closest('.delete-cart-card') == X[i]) {
+                    return X[i]
+                }
+            }
+            return 1 // zbog donjeg if-a jer vraca null != undefined => false i nece zatvarati cartWrapper klikom van njega 
+        }
+
         if ((e.target.closest('.cart') == cartComp || e.target.closest('.cart-wrapper') == cartWrapper || e.target.closest('.cart-icon') == cartIcon) && e.target.closest('.cart-wrapper .close') != closeCart) {
             whichIsClicked = 2
         }
@@ -83,9 +110,9 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.login') != loginComp) {
                 whichIsClicked = undefined
             }
-
-            if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper) {
+            if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.delete-cart-card') != clickedX()) {
                 cartWrapper.style.display = 'none'
+                X = [...deleteCartCard]
             }
 
 
@@ -101,7 +128,7 @@ const openAndCloseMobileWrappers = () => {
                 info.style.display = 'none'
             }
         }
-        console.log(whichIsClicked)
+        console.log(whichIsClicked, 'which is clicked')
 
         if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
             loginWrapper.style.display = 'none'
