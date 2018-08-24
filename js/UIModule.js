@@ -57,13 +57,19 @@ const openAndCloseMobileWrappers = () => {
     loginComp.addEventListener('click', () => {
         loginWrapper.style.display = 'block'
         loginBackground.style.display = 'block'
+        setTimeout(() => {
+            loginWrapper.style.animation = 'in 0.4s ease-in-out'
+        }, 10)
+    })
+    cartComp.addEventListener('click', () => {
+        cartWrapper.style.display = 'block'
     })
 
     for (let i = 0; i < close.length; i++) {
         (function (i) {
             close[i].addEventListener('click', () => {
                 if (i == 1 && resize >= 992) { // loginWrapper na > 992 prikazu
-                    loginWrapper.style.top = '35%'
+                    loginWrapper.style.animation = 'out 0.4s ease-in-out'
                     setTimeout(() => {
                         loginWrapper.style.display = 'none'
                         loginBackground.style.display = 'none'
@@ -115,11 +121,20 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.login') != loginComp) {
                 whichIsClicked = undefined
             }
+            console.log(e.target.closest('.cart') != cartComp, e.target.closest('.cart-wrapper') != cartWrapper, e.target.closest('.delete-cart-card') != clickedX())
+
             if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.delete-cart-card') != clickedX()) {
                 cartWrapper.style.display = 'none'
                 X = [...deleteCartCard]
             }
+            if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper) {
+                loginWrapper.style.animation = 'out 0.4s ease-in-out'
+                setTimeout(() => {
+                    loginWrapper.style.display = 'none'
+                    loginBackground.style.display = 'none'
+                }, 401)
 
+            }
 
         } else {
 
@@ -132,17 +147,18 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon) {
                 info.style.display = 'none'
             }
+            if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon && e.target.closest('.delete-cart-card') != clickedX()) {
+                cartWrapper.style.display = 'none'
+                X = [...deleteCartCard]
+            }
+            if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
+                loginWrapper.style.display = 'none'
+                loginBackground.style.display = 'none'
+            }
         }
         console.log(whichIsClicked)
 
-        if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
-            loginWrapper.style.display = 'none'
-            loginBackground.style.display = 'none'
-        }
 
-        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon && e.target.closest('.delete-cart-card') != clickedX()) {
-            cartWrapper.style.display = 'none'
-        }
 
 
     })
@@ -177,13 +193,11 @@ const openAndCloseMobileWrappers = () => {
                     info.style.display = 'none'
                     comments.style.display = 'none'
                 }
-
             }
 
             if (changeLessThen992 && whichIsClicked != undefined) {
                 mobileWrappers[whichIsClicked].style.display = 'block'
             }
-
 
             changeLessThen992 = false
             changeBiggerThen992 = true
@@ -191,9 +205,6 @@ const openAndCloseMobileWrappers = () => {
         }
     })
 
-    cartComp.addEventListener('click', () => {
-        cartWrapper.style.display = 'block'
-    })
 }
 
 
@@ -766,7 +777,7 @@ const searchingBooks = () => {
                         a.setAttribute('href', './bookInfo.html')
 
                         let img = document.createElement('img')
-                        if (el.volumeInfo.imageLinks.smallThumbnail != undefined) {
+                        if (el.volumeInfo.imageLinks != undefined) {
                             img.setAttribute('src', el.volumeInfo.imageLinks.smallThumbnail)
                         }
                         img.setAttribute('alt', 'No Image')

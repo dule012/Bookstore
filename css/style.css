@@ -1502,7 +1502,22 @@ label {
         height: 40%;
         z-index: 5;
         background-color: black;
-        transition: 0.4s ease-in-out;
+    }
+    @keyframes in {
+        0% {
+            top: 35%;
+        }
+        100% {
+            top: 50%;
+        }
+    }
+    @keyframes out {
+        0% {
+            top: 50%;
+        }
+        100% {
+            top: 35%;
+        }
     }
     .login-wrapper p {
         font-size: 2vw;
