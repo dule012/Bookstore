@@ -2,19 +2,27 @@ const openAndCloseMobileWrappers = () => {
 
     const info = document.querySelector('.info')
     const comments = document.querySelector('.comments')
-    const homeIcon = document.querySelector('.home-icon')
-    const commentsIcon = document.querySelector('.comments-icon')
-    const mobileIconsI = document.querySelectorAll('.mobile-iconsI')
-    const mobileWrappers = document.querySelectorAll('.mobile-wrappers')
-    let whichIsClicked = undefined
-    let resize = undefined
     const cartWrapper = document.querySelector('.cart-wrapper')
     const loginWrapper = document.querySelector('.login-wrapper')
+
+    const homeIcon = document.querySelector('.home-icon')
+    const commentsIcon = document.querySelector('.comments-icon')
+    const loginIcon = document.querySelector('.login-icon')
+    const cartIcon = document.querySelector('.cart-icon')
+
+    const mobileIconsI = document.querySelectorAll('.mobile-iconsI')
+    const mobileWrappers = document.querySelectorAll('.mobile-wrappers')
+
+    let whichIsClicked = undefined
+    let resize = window.innerWidth
+
     const loginComp = document.querySelector('.login')
     const cartComp = document.querySelector('.cart')
+
     const close = document.querySelectorAll('.close')
     const closeCart = document.querySelector('.cart-wrapper .close')
     const closeLogin = document.querySelector('.login-wrapper .close')
+
     const loginBackground = document.querySelector('.login-background')
 
     for (let i = 0; i < mobileWrappers.length; i++) {
@@ -24,8 +32,13 @@ const openAndCloseMobileWrappers = () => {
             mobileIconsI[i].addEventListener('click', () => {
                 // console.log(this)  sto je ovo thiis undefined???
                 for (let j = 0; j < mobileWrappers.length; j++) {
+                    // toggle za mobile ikonice
                     if (mobileIconsI[i] == mobileIconsI[j]) {
-                        mobileWrappers[j].style.display = 'block'
+                        if (mobileWrappers[j].style.display == 'none') {
+                            mobileWrappers[j].style.display = 'block'
+                        } else {
+                            mobileWrappers[j].style.display = 'none'
+                        }
                         whichIsClicked = j
                     } else {
                         mobileWrappers[j].style.display = 'none'
@@ -57,28 +70,48 @@ const openAndCloseMobileWrappers = () => {
 
     // da prebacuje kliknuti wrapper    > 992       u     < 992
     window.addEventListener('click', (e) => {
-        if (resize >= 992) {
-            if (e.target.closest('.cart') != cartComp || e.target.closest('.cart-wrapper') != cartWrapper || e.target.closest('.login') != loginComp || e.target.closest('.login-wrapper') != loginWrapper) {
-                whichIsClicked = undefined
-            }
-            if (e.target.closest('.cart') == cartComp || e.target.closest('.cart-wrapper') == cartWrapper && e.target.closest('.cart-wrapper .close') != closeCart) {
-                whichIsClicked = 2
-            }
-            if (e.target.closest('.login') == loginComp || e.target.closest('.login-wrapper') == loginWrapper && e.target.closest('.login-wrapper .close') != closeLogin) {
-                whichIsClicked = 1
-            }
+        if ((e.target.closest('.cart') == cartComp || e.target.closest('.cart-wrapper') == cartWrapper || e.target.closest('.cart-icon') == cartIcon) && e.target.closest('.cart-wrapper .close') != closeCart) {
+            whichIsClicked = 2
         }
-        if (resize < 992) {
-            if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon) {
-                info.style.display = 'none'
+        if ((e.target.closest('.login') == loginComp || e.target.closest('.login-wrapper') == loginWrapper || e.target.closest('.login-icon') == loginIcon) && e.target.closest('.login-wrapper .close') != closeLogin) {
+            whichIsClicked = 1
+        }
+
+        // uslov da je undefined sve na sta se klikne van mobile ikonica i mobile-wrappera
+        if (resize >= 992) {
+
+            if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.login') != loginComp) {
                 whichIsClicked = undefined
             }
 
-            if (e.target.closest('.comments') != comments && e.target.closest('.comments-icon') != commentsIcon) {
-                comments.style.display = 'none'
+            if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper) {
+                cartWrapper.style.display = 'none'
+            }
+
+
+        } else {
+
+            if (e.target.closest('.home-icon') != homeIcon && e.target.closest('.info') != info && e.target.closest('.comments-icon') != commentsIcon && e.target.closest('.comments') != comments && e.target.closest('.login-icon') != loginIcon && e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-icon') != cartIcon && e.target.closest('.cart-wrapper') != cartWrapper) {
                 whichIsClicked = undefined
             }
+            if (e.target.closest('.comments') != comments && e.target.closest('.comments-icon') != commentsIcon) {
+                comments.style.display = 'none'
+            }
+            if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon) {
+                info.style.display = 'none'
+            }
         }
+        console.log(whichIsClicked)
+
+        if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
+            loginWrapper.style.display = 'none'
+        }
+
+        if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon) {
+            cartWrapper.style.dispaly = 'none'
+        }
+
+
     })
 
     let changeBiggerThen992 = true //da ne display-uje stalno na  vecem prikazu od 992  wrapper kliknutog icon-a prilikom resize-a
@@ -89,14 +122,16 @@ const openAndCloseMobileWrappers = () => {
 
         console.log(whichIsClicked)
 
-        if (window.innerWidth >= 992) {
-            if (changeBiggerThen992 && whichIsClicked != undefined) {
+        if (resize >= 992) {
+            if (changeBiggerThen992 == true && whichIsClicked != undefined) {
                 mobileWrappers[whichIsClicked].style.display = 'block'
-                changeBiggerThen992 = false
             }
             info.style.display = 'block' // zbog dizajnu treba stalno biti block
             comments.style.display = 'block' // zbog dizajna treba stalno bitti block
+
+            changeBiggerThen992 = false
             changeLessThen992 = true
+
         } else {
 
             if (whichIsClicked == undefined) {
@@ -104,27 +139,25 @@ const openAndCloseMobileWrappers = () => {
                     mobileWrappers[i].style.display = 'none'
                 }
             } else {
-                if (changeLessThen992 == true) {
-                    for (let i = 0; i < mobileWrappers.length; i++) {
-                        mobileWrappers[i].style.display = 'none'
-                    }
+
+                if (changeLessThen992 && whichIsClicked != undefined) {
                     mobileWrappers[whichIsClicked].style.display = 'block'
-                    changeLessThen992 = false
+                }
+                changeLessThen992 = false
+
+                for (let i = 0; i < mobileWrappers.length; i++) {
+                    mobileWrappers[i].style.display = 'none'
                 }
             }
+
             changeBiggerThen992 = true
         }
 
     })
 
-
-
-    const search = document.querySelector('header input')
-    const searchOutput = document.querySelector('.search-output')
-
-    // search.addEventListener('keydown', () => {
-    //     searchOutput.classList.toggle('block')
-    // })
+    cartComp.addEventListener('click', () => {
+        cartWrapper.style.display = 'block'
+    })
 }
 
 
@@ -308,32 +341,6 @@ const bookInfoDisplay = () => {
 }
 
 
-const openAndCloseCartWrapper = () => {
-
-    const cartComp = document.querySelector('.cart')
-    const closeCart = document.querySelector('.cart-wrapper .close')
-    const cartWrapper = document.querySelector('.cart-wrapper')
-    const cartIcon = document.querySelector('.cart-icon')
-    // const cartI = document.querySelector('.fa-shopping-cart')
-
-    cartComp.addEventListener('click', () => {
-        cartWrapper.style.display = 'block'
-    })
-
-    // closeCart.addEventListener('click', () => {
-    //     cartWrapper.style.display = 'none'
-    // })
-
-    const closeCartWrapper = (e) => {
-        if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.cart-icon') != cartIcon) {
-            cartWrapper.style.display = 'none'
-        }
-    }
-
-    window.addEventListener('click', closeCartWrapper)
-
-}
-
 const openAndCloseLoginWrapper = () => {
 
     const loginWrapper = document.querySelector('.login-wrapper')
@@ -512,7 +519,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 cartCardDiv.setAttribute('class', 'cart-card')
 
                 let img = document.createElement('img')
-                img.setAttribute('src', bookCardsImgAll[i].src)
+                img.setAttribute('src', bookCardsImgAll[i] == undefined ? '' : bookCardsImgAll[i].src)
                 cartCardDiv.append(img)
 
                 let p = document.createElement('p')
@@ -660,22 +667,26 @@ const createBookList = (arr) => {
             a1.append(a1t)
         }
         p1.append(a1)
-        div.appendChild(p1)
+        div.append(p1)
 
         let p2 = document.createElement('p')
         p2.setAttribute('class', 'book-author-list')
         let a2 = document.createElement('a')
         a2.setAttribute('href', './bookInfo.html')
-        let a2t = document.createTextNode(el.author)
-        a2.append(a2t)
-        p2.appendChild(a2)
-        div.appendChild(p2)
+        if (el.author != undefined) {
+            let a2t = document.createTextNode(el.author)
+            a2.append(a2t)
+        }
+        p2.append(a2)
+        div.append(p2)
 
         let p3 = document.createElement('p')
         p3.setAttribute('class', 'book-description-list')
-        let p3t = document.createTextNode(el.description.slice(0, el.description.indexOf(' ', 80)) + '...')
-        p3.appendChild(p3t)
-        div.appendChild(p3)
+        if (el.description != undefined) {
+            let p3t = document.createTextNode(el.description.slice(0, el.description.indexOf(' ', 80)) + '...')
+            p3.append(p3t)
+        }
+        div.append(p3)
 
         let divStar = document.createElement('div')
         divStar.setAttribute('class', 'star-wrapper-list')
@@ -688,41 +699,41 @@ const createBookList = (arr) => {
 
                     let iy = document.createElement('i')
                     iy.setAttribute('class', 'fa fa-star yellow')
-                    divStar.appendChild(iy)
+                    divStar.append(iy)
                 } else {
 
                     let ig = document.createElement('i')
                     ig.setAttribute('class', 'fa fa-star grey')
-                    divStar.appendChild(ig)
+                    divStar.append(ig)
                 }
             }
-            div.appendChild(divStar)
+            div.append(divStar)
         }
 
         let p4 = document.createElement('p')
         p4.setAttribute('class', 'book-price-list')
         let p4t = document.createTextNode(el.price + '$')
-        p4.appendChild(p4t)
-        div.appendChild(p4)
+        p4.append(p4t)
+        div.append(p4)
 
         let p5 = document.createElement('p')
         p5.setAttribute('class', 'book-cart-list')
         let p5t = document.createTextNode('+')
-        p5.appendChild(p5t)
+        p5.append(p5t)
         let i5 = document.createElement('i')
         i5.className = 'fa fa-shopping-cart'
-        p5.appendChild(i5)
-        div.appendChild(p5)
+        p5.append(i5)
+        div.append(p5)
 
         let divBookamark = document.createElement('div')
         divBookamark.setAttribute('class', 'bookmark-icon-wrapper-list')
         let iBookmark = document.createElement('i')
         iBookmark.className = 'fa bookmark-icon-list'
         iBookmark.innerHTML = '&#xf097;'
-        divBookamark.appendChild(iBookmark)
-        div.appendChild(divBookamark)
+        divBookamark.append(iBookmark)
+        div.append(divBookamark)
 
-        container.appendChild(div)
+        container.append(div)
 
     })
 
@@ -746,6 +757,15 @@ const GridorListView = () => {
         for (let i = 0; i < booksList.length; i++) {
             booksGrid[i].style.display = 'none'
             booksList[i].style.display = 'block'
+        }
+    })
+    //zbog resize kada je list prikaz pa u manjem od 992 izgubi standardan izgled zbog klase book-card-list
+    window.addEventListener('resize', () => {
+        if (window.innerWidth < 992) {
+            for (let i = 0; i < booksGrid.length; i++) {
+                booksGrid[i].style.display = 'block'
+                booksList[i].style.display = 'none'
+            }
         }
     })
 }
@@ -773,7 +793,7 @@ const searchingBooks = () => {
                 })
                 .then((data) => {
                     let arr = data.items
-
+                    // kada se pretrazuje nesto sto ne vrati rezultat u then-u pa je data undefined
                     arr.forEach((el) => {
                         let div = document.createElement('div')
                         div.setAttribute('class', 'search-output-card')
@@ -787,33 +807,33 @@ const searchingBooks = () => {
                             img.setAttribute('src', el.volumeInfo.imageLinks.smallThumbnail)
                         }
                         img.setAttribute('alt', 'No Image')
-                        a.appendChild(img)
+                        a.append(img)
 
                         let aDiv = document.createElement('div')
 
                         let p1 = document.createElement('p')
                         if (el.volumeInfo.title.length > 45) {
                             let p1t = document.createTextNode(el.volumeInfo.title.slice(0, 35) + '...')
-                            p1.appendChild(p1t)
+                            p1.append(p1t)
                         } else {
 
                             let p1t = document.createTextNode(el.volumeInfo.title)
-                            p1.appendChild(p1t)
+                            p1.append(p1t)
                         }
-                        aDiv.appendChild(p1)
+                        aDiv.append(p1)
 
                         let p2 = document.createElement('p')
                         if (el.volumeInfo.authors != undefined) {
                             let p2t = document.createTextNode(el.volumeInfo.authors[0] || el.volumeInfo.authors[1])
-                            p2.appendChild(p2t)
+                            p2.append(p2t)
                         }
-                        aDiv.appendChild(p2)
+                        aDiv.append(p2)
 
-                        a.appendChild(aDiv)
+                        a.append(aDiv)
 
-                        div.appendChild(a)
+                        div.append(a)
 
-                        searchOutputWrapper.appendChild(div)
+                        searchOutputWrapper.append(div)
                     })
                 })
         } else {
@@ -833,7 +853,6 @@ export {
     createBookGrid,
     createBookList,
     bookInfoDisplay,
-    openAndCloseCartWrapper,
     openAndCloseLoginWrapper,
     postCommentsBookstoore,
     openAndCloseMobileWrappers,
