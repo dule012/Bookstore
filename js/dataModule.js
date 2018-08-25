@@ -20,4 +20,7 @@ const booksArr = (obj) => {
     })
 }
 
-export default booksArr
+export {
+    booksArr,
+    Book
+}

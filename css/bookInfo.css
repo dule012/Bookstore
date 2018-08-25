@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60%;
+    width: 100%;
+    background-image: url('../content.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(9px);
+    z-index: -1;
+}
+
+header {
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.back {
+    float: left;
+    margin-left: 10px;
+    margin-top: -5px;
+    font-size: 25px;
+    color: #9c9b9b;
+}
+
+.fa-search {
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size: 15px;
+    color: #9c9b9b;
+}
+
+header input {
+    float: right;
+    margin-right: 6px;
+    border: none;
+    padding-bottom: 3px;
+    background-color: transparent;
+    border-bottom: 1px solid grey;
+}
+
+.info {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.info p:nth-child(1) {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.info p:nth-child(2) {
+    font-size: 13px;
+}
+
+.star-wrapper {
+    margin-top: 10px;
+}
+
+.info img {
+    margin-top: 30px;
+}
+
+.main {
+    width: 90%;
+    margin: 8% auto;
+}
+
+.main p:nth-child(1) {
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.main p:nth-child(2) {
+    text-align: center;
+}
+
+.main p:nth-child(3) {
+    margin-top: 50px;
+}
+
+.buy-and-cart {
+    overflow: hidden;
+    width: 90%;
+    margin: 10% auto;
+}
+
+.buy {
+    float: left;
+    width: 40%;
+    padding: 8px 0;
+    background-color: #2b9dff;
+    color: white;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cart {
+    float: right;
+    width: 40%;
+    padding: 8px 0;
+    background-color: black;
+    color: white;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+}

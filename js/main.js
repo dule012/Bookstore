@@ -1,4 +1,6 @@
-import booksArr from './dataModule.js'
+import {
+    booksArr
+} from './dataModule.js'
 import {
     createBookGrid,
     createBookList,

@@ -24,8 +24,13 @@ const openAndCloseMobileWrappers = () => {
     const closeLogin = document.querySelector('.login-wrapper .close')
 
     const deleteCartCard = document.getElementsByClassName('delete-cart-card')
-    let X = 0
+    let X = []
     const shoppingCart = document.querySelectorAll('.fa-shopping-cart:not(.i-cart-comp)')
+
+    const deletBookmarkCard = document.getElementsByClassName('delete-bookmark-card')
+    const bookmarkWrapperGrid = document.querySelectorAll('.bookmark-icon-wrapper-grid')
+    let XBookmark = []
+
 
     const loginBackground = document.querySelector('.login-background')
 
@@ -57,9 +62,7 @@ const openAndCloseMobileWrappers = () => {
     loginComp.addEventListener('click', () => {
         loginWrapper.style.display = 'block'
         loginBackground.style.display = 'block'
-        setTimeout(() => {
-            loginWrapper.style.animation = 'in 0.4s ease-in-out'
-        }, 10)
+        loginWrapper.style.animation = 'in 0.4s ease-in-out'
     })
     cartComp.addEventListener('click', () => {
         cartWrapper.style.display = 'block'
@@ -108,6 +111,32 @@ const openAndCloseMobileWrappers = () => {
             return 1 // zbog donjeg if-a jer vraca null != undefined => false i nece zatvarati cartWrapper klikom van njega 
         }
 
+
+
+
+        const clickedBookmarkWrapper = () => {
+            for (let i = 0; i < bookmarkWrapperGrid.length; i++) {
+
+                if (e.target.closest('.bookmark-icon-wrapper-grid') == bookmarkWrapperGrid[i]) {
+                    return bookmarkWrapperGrid[i]
+                }
+            }
+            return 1 //zbog donjeg if-a jer vraca null == undefined => true i uvek i update-uje niz sto ne treb
+        }
+
+        if (e.target.closest('.bookmark-icon-wrapper-grid') == clickedBookmarkWrapper()) {
+            XBookmark = [...deletBookmarkCard]
+        }
+
+        const clickedXBookmark = () => {
+            for (let i = 0; i < XBookmark.length; i++) {
+                if (e.target.closest('.delete-bookmark-card') == XBookmark[i]) {
+                    return XBookmark[i]
+                }
+            }
+            return 1 // zbog donjeg if-a jer vraca null != undefined => false i nece zatvarati cartWrapper klikom van njega 
+        }
+
         if ((e.target.closest('.cart') == cartComp || e.target.closest('.cart-wrapper') == cartWrapper || e.target.closest('.cart-icon') == cartIcon) && e.target.closest('.cart-wrapper .close') != closeCart) {
             whichIsClicked = 2
         }
@@ -121,11 +150,10 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.login') != loginComp) {
                 whichIsClicked = undefined
             }
-            console.log(e.target.closest('.cart') != cartComp, e.target.closest('.cart-wrapper') != cartWrapper, e.target.closest('.delete-cart-card') != clickedX())
 
             if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.delete-cart-card') != clickedX()) {
                 cartWrapper.style.display = 'none'
-                X = [...deleteCartCard]
+                X = [...deleteCartCard] //da se update-uje niz
             }
             if (e.target.closest('.login') != loginComp && e.target.closest('.login-wrapper') != loginWrapper) {
                 loginWrapper.style.animation = 'out 0.4s ease-in-out'
@@ -134,6 +162,8 @@ const openAndCloseMobileWrappers = () => {
                     loginBackground.style.display = 'none'
                 }, 401)
 
+
+                XBookmark = [...deletBookmarkCard] //da se update-uje niz 
             }
 
         } else {
@@ -144,22 +174,25 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.comments') != comments && e.target.closest('.comments-icon') != commentsIcon) {
                 comments.style.display = 'none'
             }
-            if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon) {
+
+
+
+            if (e.target.closest('.info') != info && e.target.closest('.home-icon') != homeIcon && e.target.closest('.delete-bookmark-card') != clickedXBookmark()) {
                 info.style.display = 'none'
+                XBookmark = [...deletBookmarkCard] //da se update-uje niz
             }
+
+
+
             if (e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart-icon') != cartIcon && e.target.closest('.delete-cart-card') != clickedX()) {
                 cartWrapper.style.display = 'none'
-                X = [...deleteCartCard]
+                X = [...deleteCartCard] // da se update-uje niz
             }
             if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.login-icon') != loginIcon) {
                 loginWrapper.style.display = 'none'
                 loginBackground.style.display = 'none'
             }
         }
-        console.log(whichIsClicked)
-
-
-
 
     })
 
@@ -172,7 +205,6 @@ const openAndCloseMobileWrappers = () => {
     window.addEventListener('resize', () => {
         resize = window.innerWidth
 
-        console.log(whichIsClicked)
 
         if (resize >= 992) {
             if (changeBiggerThen992 == true && whichIsClicked != undefined) {
@@ -527,7 +559,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 iX[iX.length - 1].addEventListener('click', (e) => {
                     for (let k = 0; k < cartCard.length; k++) {
                         if (e.target.closest('.cart-card') == cartCard[k]) {
-                            total.textContent = (parseFloat(total.textContent) - (parseFloat(cartCardCounter[k].textContent) * parseFloat(cartCardPrice[k].textContent))).toFixed(2)
+                            total.textContent = Math.abs((parseFloat(total.textContent) - (parseFloat(cartCardCounter[k].textContent) * parseFloat(cartCardPrice[k].textContent))).toFixed(2))
                             totalComp.textContent = total.textContent
                             noOfBooks.textContent = parseFloat(noOfBooks.textContent) - 1
                             cartCard[k].remove()
