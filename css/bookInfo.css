@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
     height: 60%;
+    max-height: 400px;
     width: 100%;
     background-image: url('../content.jpeg');
     background-size: cover;
@@ -43,6 +44,7 @@ header input {
     margin-right: 6px;
     border: none;
     padding-bottom: 3px;
+    text-align: center;
     background-color: transparent;
     border-bottom: 1px solid grey;
 }
@@ -67,6 +69,8 @@ header input {
 
 .info img {
     margin-top: 30px;
+    width: 210px;
+    height: 320px;
 }
 
 .main {
@@ -114,4 +118,39 @@ header input {
     border-radius: 14px;
     text-align: center;
     cursor: pointer;
+}
+
+@media screen and (min-width: 650px) {
+    .back {
+        margin-left: 4vw;
+        font-size: 3vw;
+    }
+    header input {
+        width: 25%;
+        font-size: 1.3vw;
+        margin-right: 1vw;
+    }
+    #fa-search {
+        font-size: 1.4vw;
+        margin-right: 4vw;
+    }
+    .info {
+        margin-top: 5vw;
+        display: inline-block;
+        text-align: center;
+        padding-left: 10vw;
+    }
+    .buy-and-cart {
+        position: absolute;
+        top: 450px;
+        left: 50vw;
+        width: 20vw;
+    }
+    .buy {
+        width: 30%;
+    }
+    .cart {
+        width: 30%;
+    }
+
 }
