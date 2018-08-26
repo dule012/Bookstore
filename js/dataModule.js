@@ -1,7 +1,7 @@
 class Book {
     constructor(obj) {
         this.id = obj.id
-        this.title = obj.volumeInfo.title
+        this.title = obj.volumeInfo.title == undefined ? 'none' : obj.volumeInfo.title
         this.author = obj.volumeInfo.authors == undefined ? 'none' : obj.volumeInfo.authors[0]
         this.publishedDate = obj.volumeInfo.publishedDate
         this.pageCount = obj.volumeInfo.pageCount

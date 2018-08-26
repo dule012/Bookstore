@@ -800,7 +800,7 @@ const searchingBooks = () => {
                 .then((data) => {
                     let arr = data.items
                     // kada se pretrazuje nesto sto ne vrati rezultat u then-u pa je data undefined
-                    arr.forEach((el) => {
+                    arr.forEach((el, i) => {
                         let div = document.createElement('div')
                         div.setAttribute('class', 'search-output-card')
                         div.setAttribute('key', el.id)
@@ -840,6 +840,12 @@ const searchingBooks = () => {
                         div.append(a)
 
                         searchOutputWrapper.append(div)
+
+                        searchOutputCards[i].addEventListener('click', (e) => {
+                            localStorage.setItem('id', e.target.closest('.search-output-card').getAttribute('key'))
+                            localStorage.setItem('lastViewed', e.target.closest('.search-output-card').firstElementChild.lastElementChild.firstElementChild.textContent)
+                        })
+
                     })
                 })
         } else {
@@ -866,10 +872,18 @@ const createLocalStorage = () => {
     const bookmarkIconAll = [...bookmarkIconGrid, ...bookmarkIconList]
 
     const titleBookmark = document.getElementsByClassName('bookmarks-title')
-    const authorBookmark = document.getElementsByClassName('bookmarks-author')
 
-    const lastViewedComp = document.querySelector('.last-viewed-comp > a > span')
-    const lastViewedMobile = document.querySelector('.last-viewed-mobile > a > span')
+    const lastViewedComp = document.querySelector('.last-viewed-comp > a')
+    const lastViewedMobile = document.querySelector('.last-viewed-mobile > a')
+    const lastViewedCompSpan = document.querySelector('.last-viewed-comp > a > span')
+    const lastViewedMobileSpan = document.querySelector('.last-viewed-mobile > a > span')
+
+    if (localStorage.getItem('lastViewed') != null) {
+        lastViewedCompSpan.textContent = localStorage.getItem('lastViewed')
+        lastViewedMobileSpan.textContent = localStorage.getItem('lastViewed')
+        lastViewedComp.innerHTML += '<i class="fa">&#xf178;</i>'
+        lastViewedMobile.innerHTML += '<i class="fa">&#xf178;</i>'
+    }
 
     for (let i = 0; i < titleGrid.length; i++) {
 
@@ -877,22 +891,22 @@ const createLocalStorage = () => {
 
             titleGrid[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
-                // jer odmah menja pre nego sto krene da otvara novu stranicu
-                    lastViewedComp.textContent = e.target.closest('.book-title-grid').textContent
-
+                localStorage.setItem('lastViewed', e.target.closest('.book-title-grid').firstElementChild.textContent)
             })
 
             authorGrid[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
-                    lastViewedComp.textContent = e.target.closest('.book-author-grid').previousElementSibling.firstElementChild.textContent
+                localStorage.setItem('lastViewed', e.target.closest('.book-author-grid').previousElementSibling.firstElementChild.textContent)
             })
 
             titleList[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-list').getAttribute('key'))
+                localStorage.setItem('lastViewed', e.target.closest('.book-title-list').firstElementChild.textContent)
             })
 
             authorList[i].addEventListener('click', (e) => {
-                localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+                localStorage.setItem('id', e.target.closest('.book-card-list').getAttribute('key'))
+                localStorage.setItem('lastViewed', e.target.closest('.book-author-list').previousElementSibling.firstElementChild.textContent)
             })
 
         })(i)
@@ -906,6 +920,7 @@ const createLocalStorage = () => {
 
                 titleBookmark[titleBookmark.length - 1].addEventListener('click', (e) => {
                     localStorage.setItem('id', e.target.closest('.bookmarks-card').getAttribute('key'))
+                    localStorage.setItem('lastViewed', e.target.closest('.bookmarks-title').firstElementChild.textContent)
                 })
 
 
