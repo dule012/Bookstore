@@ -120,37 +120,70 @@ header input {
     cursor: pointer;
 }
 
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 960px) {
     .back {
         margin-left: 4vw;
-        font-size: 3vw;
+        font-size: 30px;
     }
     header input {
-        width: 25%;
-        font-size: 1.3vw;
+        width: 350px;
+        font-size: 17px;
         margin-right: 1vw;
     }
     #fa-search {
-        font-size: 1.4vw;
+        font-size: 18px;
         margin-right: 4vw;
     }
     .info {
-        margin-top: 5vw;
+        margin-top: 60px;
         display: inline-block;
         text-align: center;
-        padding-left: 10vw;
+        padding-left: 130px;
+    }
+    .info img {
+        width: 180px;
+        height: 260px;
     }
     .buy-and-cart {
+        margin: 0;
         position: absolute;
-        top: 450px;
-        left: 50vw;
-        width: 20vw;
+        top: 410px;
+        left: 550px;
+        transform: translate(-50%, 0);
+        width: initial;
     }
     .buy {
-        width: 30%;
+        width: 120px;
     }
     .cart {
-        width: 30%;
+        float: left;
+        margin-left: 50px;
+        width: 120px;
     }
-
+    .main {
+        margin: 0;
+        width: 100%;
+        max-width: 2000px;
+        margin-top: 50px;
+        position: relative;
+        padding-left: 140px;
+    }
+    .main p:nth-child(1), .manin p:nth-child(2) {
+        text-align: left;
+    }
+    .main p:nth-child(3) {
+        margin-top: 0;
+        margin-left: 60px;
+        float: left;
+    }
+    .main p:nth-child(5) {
+        float: right;
+        margin-right: 60px;
+    }
+    .main p:nth-child(4) {
+        position: absolute;
+        top: 100%;
+        left: 55%;
+        transform: translate(-50%, 0);
+    }
 }
