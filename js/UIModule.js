@@ -610,6 +610,7 @@ const createBookmarkCardandDelete = () => {
                 let div = document.createElement('div')
                 div.setAttribute('class', 'bookmarks-card')
                 div.setAttribute('key', bookCardAll[a].getAttribute('key'))
+                console.log(div.getAttribute('key'))
 
                 let p1 = document.createElement('p')
                 p1.setAttribute('class', 'bookmarks-title')
@@ -633,7 +634,7 @@ const createBookmarkCardandDelete = () => {
                 div.append(i)
                 bookmarksWrapper.append(div)
 
-                iDelete[iDelete.length - 1].addEventListener('click', (еvenet) => {
+                iDelete[iDelete.length - 1].addEventListener('click', (еvent) => {
                     for (let k = 0; k < iDelete.length; k++) {
                         if (event.target.closest('.bookmarks-card') == bookmarksCard[k]) {
                             bookmarksCard[k].remove()
@@ -866,9 +867,9 @@ const createLocalStorage = () => {
 
     const titleBookmark = document.getElementsByClassName('bookmarks-title')
     for (let i = 0; i < titleGrid.length; i++) {
-        
+
         (function (i) {
-            
+
             titleGrid[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
             })
@@ -891,8 +892,8 @@ const createLocalStorage = () => {
     //niz titleBookmark je prazan na startu, dinamicki pravi pa preko klika na bookmarkIcon u book-info-card-u update-uje se taj niz
     for (let i = 0; i < bookmarkIconAll.length; i++) {
         (function (i) {
-            bookmarkIconAll[i].addEventListener('click', (e) => {
-                titleBookmark[titleBookmark.length - 1].addEventListener('click', () => {
+            bookmarkIconAll[i].addEventListener('click', () => {
+                titleBookmark[titleBookmark.length - 1].addEventListener('click', (e) => {
                     localStorage.setItem('id', e.target.closest('.bookmarks-card').getAttribute('key'))
                 })
             })
