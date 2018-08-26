@@ -274,7 +274,6 @@ const createBookGrid = (arr) => {
 
         let pAuthor = document.createElement('p')
         pAuthor.setAttribute('class', 'book-author-grid')
-        pAuthor.setAttribute('key', el.id)
 
         let pAuthorA = document.createElement('a')
         pAuthorA.setAttribute('href', './bookInfo.html')
@@ -855,6 +854,52 @@ const searchingBooks = () => {
 
 }
 
+const createLocalStorage = () => {
+    const titleGrid = document.querySelectorAll('.book-title-grid')
+    const authorGrid = document.querySelectorAll('.book-author-grid')
+    const titleList = document.querySelectorAll('.book-title-list')
+    const authorList = document.querySelectorAll('.book-author-list')
+
+    const bookmarkIconGrid = document.querySelectorAll('.bookmark-icon-wrapper-grid')
+    const bookmarkIconList = document.querySelectorAll('.bookmark-icon-wrapper-list')
+    const bookmarkIconAll = [...bookmarkIconGrid, ...bookmarkIconList]
+
+    const titleBookmark = document.getElementsByClassName('bookmarks-title')
+    for (let i = 0; i < titleGrid.length; i++) {
+        
+        (function (i) {
+            
+            titleGrid[i].addEventListener('click', (e) => {
+                localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+            })
+
+            authorGrid[i].addEventListener('click', (e) => {
+                localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+            })
+
+            titleList[i].addEventListener('click', (e) => {
+                localStorage.setItem('id', e.target.closest('.book-card-list').getAttribute('key'))
+            })
+
+            authorList[i].addEventListener('click', (e) => {
+                localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+            })
+
+        })(i)
+    }
+
+    //niz titleBookmark je prazan na startu, dinamicki pravi pa preko klika na bookmarkIcon u book-info-card-u update-uje se taj niz
+    for (let i = 0; i < bookmarkIconAll.length; i++) {
+        (function (i) {
+            bookmarkIconAll[i].addEventListener('click', (e) => {
+                titleBookmark[titleBookmark.length - 1].addEventListener('click', () => {
+                    localStorage.setItem('id', e.target.closest('.bookmarks-card').getAttribute('key'))
+                })
+            })
+        })(i)
+    }
+}
+
 export {
     createBookGrid,
     createBookList,
@@ -865,6 +910,7 @@ export {
     createBookmarkCardandDelete,
     bookmarkIconChangeColor,
     GridorListView,
-    searchingBooks
+    searchingBooks,
+    createLocalStorage,
 
 }
