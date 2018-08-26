@@ -11,7 +11,7 @@
     height: 60%;
     max-height: 400px;
     width: 100%;
-    background-image: url('../content.jpeg');
+    /* background-image: url('../content.jpeg'); */
     background-size: cover;
     background-position: center;
     filter: blur(9px);
@@ -41,12 +41,14 @@ header {
 
 header input {
     float: right;
+    width: 300px;
     margin-right: 6px;
     border: none;
     padding-bottom: 3px;
     text-align: center;
     background-color: transparent;
     border-bottom: 1px solid grey;
+    color: rgb(111, 140, 160);
 }
 
 .info {
@@ -92,6 +94,10 @@ header input {
     margin-top: 50px;
 }
 
+.description, .about, .title, .author {
+    color: rgb(111, 140, 160);
+}
+
 .buy-and-cart {
     overflow: hidden;
     width: 90%;
@@ -120,10 +126,21 @@ header input {
     cursor: pointer;
 }
 
+.yellow {
+    color: yellow;
+}
+
+.grey {
+    color: grey;
+}
+
 @media screen and (min-width: 960px) {
     .back {
         margin-left: 4vw;
-        font-size: 30px;
+        font-size: 32px;
+    }
+    .back:hover {
+        color: black;
     }
     header input {
         width: 350px;
@@ -136,13 +153,16 @@ header input {
     }
     .info {
         margin-top: 60px;
-        display: inline-block;
+        width: 350px;
         text-align: center;
         padding-left: 130px;
     }
     .info img {
         width: 180px;
         height: 260px;
+    }
+    .about {
+        padding-left: 30px;
     }
     .buy-and-cart {
         margin: 0;

@@ -866,16 +866,25 @@ const createLocalStorage = () => {
     const bookmarkIconAll = [...bookmarkIconGrid, ...bookmarkIconList]
 
     const titleBookmark = document.getElementsByClassName('bookmarks-title')
+    const authorBookmark = document.getElementsByClassName('bookmarks-author')
+
+    const lastViewedComp = document.querySelector('.last-viewed-comp > a > span')
+    const lastViewedMobile = document.querySelector('.last-viewed-mobile > a > span')
+
     for (let i = 0; i < titleGrid.length; i++) {
 
         (function (i) {
 
             titleGrid[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+                // jer odmah menja pre nego sto krene da otvara novu stranicu
+                    lastViewedComp.textContent = e.target.closest('.book-title-grid').textContent
+
             })
 
             authorGrid[i].addEventListener('click', (e) => {
                 localStorage.setItem('id', e.target.closest('.book-card-grid').getAttribute('key'))
+                    lastViewedComp.textContent = e.target.closest('.book-author-grid').previousElementSibling.firstElementChild.textContent
             })
 
             titleList[i].addEventListener('click', (e) => {
@@ -892,11 +901,16 @@ const createLocalStorage = () => {
     //niz titleBookmark je prazan na startu, dinamicki pravi pa preko klika na bookmarkIcon u book-info-card-u update-uje se taj niz
     for (let i = 0; i < bookmarkIconAll.length; i++) {
         (function (i) {
+
             bookmarkIconAll[i].addEventListener('click', () => {
+
                 titleBookmark[titleBookmark.length - 1].addEventListener('click', (e) => {
                     localStorage.setItem('id', e.target.closest('.bookmarks-card').getAttribute('key'))
                 })
+
+
             })
+
         })(i)
     }
 }
