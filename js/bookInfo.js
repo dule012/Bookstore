@@ -1,4 +1,4 @@
-import { Book } from './dataModule.js'
+import { Book, booksArr } from './dataModule.js'
 
 const apiBookById = `https://www.googleapis.com/books/v1/volumes/${localStorage.getItem('id')}`
 
@@ -70,5 +70,73 @@ fetch(apiBookById)
                 price.textContent = book.price + '$'
             }
             addingApiPropsToBookInfo()
+
+            const searchBooks = () => {
+                const searchWrapper = document.querySelector('.search-output')
+                const searchOutputCard = document.getElementsByClassName('search-output-card')
+                const input = document.querySelector('header > input')
+
+                input.addEventListener('keydown', () => {
+                   
+                    if (input.value.length >= 2) {
+
+                            for(let i = 0; i < searchOutputCard.length; i++) {
+                                searchOutputCard[i].remove()
+                                i--
+                            }
+
+                        fetch(`https://www.googleapis.com/books/v1/volumes?q=${input.value}&printType=books&projection=full&maxResults=15`)
+                            .then((data) => {
+                                return data.json()
+                            })
+                            .then((data) => {
+
+                                if (typeof data.error == 'object') {
+                                    return
+                                }
+
+                                const arr = booksArr(data)
+
+                                arr.forEach((el, i) => {
+                                    let div = document.createElement('div')
+                                    div.setAttribute('class', 'search-output-card')
+                                    div.setAttribute('key', el.id)
+
+                                    let a = document.createElement('a')
+                                    a.setAttribute('href', './bookInfo.html')
+
+                                    let img = document.createElement('img')
+                                    img.setAttribute('src', el.smallThumbnail)
+                                    a.append(img)
+
+                                    let aDiv = document.createElement('div')
+                                    let p1 = document.createElement('p')
+                                    let p1t = document.createTextNode(el.title.length > 36 ? el.title.slice(0, 35) + '...' : el.title)
+                                    p1.append(p1t)
+                                    aDiv.append(p1)
+                                    let p2 = document.createElement('p')
+                                    let p2t = document.createTextNode(el.author)
+                                    p2.append(p2t)
+                                    aDiv.append(p2)
+                                    a.append(aDiv)
+
+                                    div.append(a)
+                                    searchWrapper.append(div)
+
+                                    searchOutputCard[i].addEventListener('click', (e) => {
+                                        localStorage.setItem('id', e.target.closest('.search-output-card').getAttribute('key'))
+                                        localStorage.setItem('lastViewed', e.target.closest('.search-output-card').firstElementChild.lastElementChild.firstElementChild.textContent)
+                                    })
+                                })
+                            })
+
+                        searchWrapper.style.display = 'block'
+                    } else {
+                        searchWrapper.style.display = 'none'
+                    }
+                })
+            }
+            searchBooks()
+
         }
     })

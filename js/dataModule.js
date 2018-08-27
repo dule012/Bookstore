@@ -8,7 +8,7 @@ class Book {
         this.description = obj.volumeInfo.description
         this.categories = obj.volumeInfo.categories == undefined ? 'none' : obj.volumeInfo.categories[0]
         this.averageRating = obj.volumeInfo.averageRating
-        this.smallThumbnail = obj.volumeInfo.imageLinks.smallThumbnail
+        this.smallThumbnail = obj.volumeInfo.imageLinks.smallThumbnail == undefined ? '' : obj.volumeInfo.imageLinks.smallThumbnail
         this.thumbnail = obj.volumeInfo.imageLinks.thumbnail
         this.price = (Math.random() * 25 + 5).toFixed(2)
     }

@@ -31,6 +31,10 @@ header {
     color: #9c9b9b;
 }
 
+.back:hover {
+    color: black;
+}
+
 .fa-search {
     float: right;
     margin-right: 10px;
@@ -41,14 +45,58 @@ header {
 
 header input {
     float: right;
-    width: 300px;
+    width: 210px;
     margin-right: 6px;
     border: none;
     padding-bottom: 3px;
     text-align: center;
     background-color: transparent;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid white;
     color: rgb(111, 140, 160);
+}
+
+.search-output {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 31px;
+    width: 210px;
+    height: initial;
+    max-height: 90%;
+    z-index: 3;
+    background-color: white;
+    padding: 10px;
+    overflow: auto;
+}
+
+.search-output-card {
+    margin-bottom: 5px;
+}
+
+.search-output-card a {
+    display: block;
+    overflow: hidden;
+}
+
+.search-output-card img {
+    float: left;
+    width: 30px;
+    height: 50px;
+}
+
+.search-output-card div {
+    float: right;
+    width: 70%;
+}
+
+.search-output-card p {
+    color: black;
+    font-size: 10px;
+    text-align: right;
+}
+
+.search-output-card p:nth-child(1) {
+    font-weight: bold;
 }
 
 .info {
@@ -126,6 +174,82 @@ header input {
     cursor: pointer;
 }
 
+.cart-wrapper {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    background-color: white;
+    z-index: 5;
+    padding: 15px;
+    overflow: auto;
+}
+.cart-wrapper i {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    font-size: 27px;
+    color: black;
+    cursor: pointer;
+}
+.cart-card {
+    clear: both;
+    height: 80px;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+.cart-card img {
+    float: left;
+    width: 50px;
+    height: 80px;
+}
+
+.cart-card>p {
+    float: left;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.cart-card div {
+    float: right;
+    text-align: center;
+    margin-top: -10px;
+    margin-right: 40px;
+    position: relative;
+}
+
+.cart-card div p:nth-child(1) {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.cart-card i {
+    position: absolute;
+    top: 50%;
+    right: -35px;
+    transform: translate(0, -50%);
+    font-size: 17px;
+    color: black;
+    cursor: pointer;
+}
+
+.no-of-books {
+    float: left;
+    font-weight: bold;
+}
+
+.total {
+    float: right;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
 .yellow {
     color: yellow;
 }
@@ -139,13 +263,21 @@ header input {
         margin-left: 4vw;
         font-size: 32px;
     }
-    .back:hover {
-        color: black;
-    }
     header input {
         width: 350px;
         font-size: 17px;
         margin-right: 1vw;
+    }
+    .search-output {
+        width: 350px;
+        right: 63px;
+    }
+    .search-output-card img {
+        width: 40px;
+        height: 60px;
+    }
+    .search-output-card div p {
+        font-size: 12px;
     }
     #fa-search {
         font-size: 18px;
@@ -192,18 +324,13 @@ header input {
         text-align: left;
     }
     .main p:nth-child(3) {
-        margin-top: 0;
+        margin-top: 15px;
         margin-left: 30px;
-        float: left;
     }
     .main p:nth-child(5) {
-        float: right;
-        margin-right: 30px;
+        margin-left: 30px;
     }
     .main p:nth-child(4) {
-        position: absolute;
-        top: 100%;
-        left: 55%;
-        transform: translate(-50%, 0);
+        margin-left: 30px;
     }
 }

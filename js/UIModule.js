@@ -496,15 +496,15 @@ const sumOfPricesAndCreateCartCard = (e) => {
     const bookCardsImgGrid = document.querySelectorAll('.book-card-grid > img')
     const bookCardsImgList = document.querySelectorAll('.book-card-grid > img')
     const bookCardsImgAll = [...bookCardsImgGrid, ...bookCardsImgList]
-    
+
     const bookCardsPriceGrid = document.querySelectorAll('.book-price-grid')
     const bookCardsPriceList = document.querySelectorAll('.book-price-list')
     const bookCardsPriceAll = [...bookCardsPriceGrid, ...bookCardsPriceList]
-    
+
     const iX = document.getElementsByClassName('delete-cart-card')
-    
+
     // ako nema u localStorage-u cartCardsArr
-    let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr')) == null ? localStorage.setItem('cartCardsArr',JSON.stringify([])) : JSON.parse(localStorage.getItem('cartCardsArr'))
+    let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr')) == null ? localStorage.setItem('cartCardsArr', JSON.stringify([])) : JSON.parse(localStorage.getItem('cartCardsArr'))
 
     for (let i = 0; i < carts.length; i++) {
 
@@ -518,7 +518,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
 
                         total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[j].textContent)).toFixed(2)
                         totalComp.textContent = total.textContent
-                       
+
                         localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                         localStorageArr[j].counter = cartCardCounter[j].textContent
                         localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
@@ -562,7 +562,7 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 totalComp.textContent = total.textContent
                 noOfBooks.textContent = cartCard.length
 
-                 localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
+                localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                 localStorageArr.push({
                     title: bookCardsTitleAll[i].textContent,
                     img: bookCardsImgAll[i] == undefined ? '' : bookCardsImgAll[i].src,
@@ -686,7 +686,7 @@ const createBookList = (arr) => {
         p1.setAttribute('class', 'book-title-list')
         let a1 = document.createElement('a')
         a1.setAttribute('href', './bookInfo.html')
-        if (el.title.length > 49) {
+        if (el.title.length > 36) {
             let a1t = document.createTextNode(el.title.slice(0, 35) + '...')
             a1.append(a1t)
         } else {
@@ -821,6 +821,9 @@ const searchingBooks = () => {
                 .then((data) => {
                     let arr = data.items
                     // kada se pretrazuje nesto sto ne vrati rezultat u then-u pa je data undefined
+                    if (typeof data.error == 'object') {
+                        return
+                    }
                     arr.forEach((el, i) => {
                         let div = document.createElement('div')
                         div.setAttribute('class', 'search-output-card')
@@ -839,7 +842,7 @@ const searchingBooks = () => {
                         let aDiv = document.createElement('div')
 
                         let p1 = document.createElement('p')
-                        if (el.volumeInfo.title.length > 45) {
+                        if (el.volumeInfo.title.length > 36) {
                             let p1t = document.createTextNode(el.volumeInfo.title.slice(0, 35) + '...')
                             p1.append(p1t)
                         } else {
