@@ -89,14 +89,14 @@ const openAndCloseMobileWrappers = () => {
     //da gasim klikom van wrappera i pronadjem kliknuti wrapper koji ce se dislay-ovati na resize
     window.addEventListener('click', (e) => {
         // ovo je potrebno zato sto postoji listener u drugoj f-ji za brisanje cartCards i ovde mi uvek update-uje niz deleteCartCard posle izvrsenja tj brisanja cartCard-a
-        const clickedCart = () => {
-            for (let i = 0; i < shoppingCart.length; i++) {
-                if (e.target.closest('.fa-shopping-cart') == shoppingCart[i]) {
-                    return shoppingCart[i]
-                }
-            }
-            return 1 // zbog donjeg if-a jer vraca null == undefined => true i uvek i update-uje niz sto ne treba
-        }
+        // const clickedCart = () => {
+        //     for (let i = 0; i < shoppingCart.length; i++) {
+        //         if (e.target.closest('.fa-shopping-cart') == shoppingCart[i]) {
+        //             return shoppingCart[i]
+        //         }
+        //     }
+        //     return 1 // zbog donjeg if-a jer vraca null == undefined => true i uvek i update-uje niz sto ne treba
+        // }
 
 
         const clickedX = () => {
@@ -1034,6 +1034,8 @@ const displayCartCardsFromLocalStorage = (arr) => {
 
     }
 }
+
+
 export {
     createBookGrid,
     createBookList,
@@ -1046,5 +1048,5 @@ export {
     GridorListView,
     searchingBooks,
     createLocalStorage,
-    displayCartCardsFromLocalStorage
+    displayCartCardsFromLocalStorage,
 }

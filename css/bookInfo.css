@@ -52,7 +52,7 @@ header input {
     text-align: center;
     background-color: transparent;
     border-bottom: 1px solid white;
-    color: rgb(111, 140, 160);
+    color: black;
 }
 
 .search-output {
@@ -142,7 +142,11 @@ header input {
     margin-top: 50px;
 }
 
-.description, .about, .title, .author {
+.title, .author {
+    color: black;
+}
+
+.description, .about {
     color: rgb(111, 140, 160);
 }
 
@@ -165,27 +169,36 @@ header input {
 
 .cart {
     float: right;
+    position: relative;
     width: 40%;
-    padding: 8px 0;
+    padding: 18px 0;
     background-color: black;
-    color: white;
     border-radius: 14px;
-    text-align: center;
     cursor: pointer;
 }
 
+.cart>i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+}
+
 .cart-wrapper {
-    display: block;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 40px;
+    bottom: 0;
     background-color: white;
     z-index: 5;
     padding: 15px;
     overflow: auto;
 }
+
 .cart-wrapper i {
     position: absolute;
     top: 13px;
@@ -194,6 +207,7 @@ header input {
     color: black;
     cursor: pointer;
 }
+
 .cart-card {
     clear: both;
     height: 80px;
@@ -311,6 +325,12 @@ header input {
         float: left;
         margin-left: 50px;
         width: 120px;
+    }
+    .cart-wrapper {
+        top: 10%;
+        left: 20%;
+        right: 20%;
+        bottom: 10%;
     }
     .main {
         margin: 0;
