@@ -313,15 +313,12 @@ div.book-card-grid {
     font-size: 13px;
 }
 
-.star-wrapper-grid i:nth-of-type(1),
-.star-wrapper-grid i:nth-of-type(2),
-.star-wrapper-grid i:nth-of-type(3) {
+.star-wrapper-grid i:nth-of-type(1), .star-wrapper-grid i:nth-of-type(2), .star-wrapper-grid i:nth-of-type(3) {
     color: yellow;
     cursor: none;
 }
 
-.star-wrapper-grid i:nth-of-type(4),
-.star-wrapper-grid i:nth-of-type(5) {
+.star-wrapper-grid i:nth-of-type(4), .star-wrapper-grid i:nth-of-type(5) {
     cursor: none;
 }
 
@@ -497,8 +494,7 @@ div.book-card-grid {
     text-align: center;
 }
 
-.login-wrapper [type="text"],
-.login-wrapper [type="password"] {
+.login-wrapper [type="text"], .login-wrapper [type="password"] {
     margin-top: 20px;
     width: 100%;
     text-align: center;
@@ -529,10 +525,7 @@ label {
     overflow: hidden;
 }
 
-.home-icon,
-.login-icon,
-.cart-icon,
-.comments-icon {
+.home-icon, .login-icon, .cart-icon, .comments-icon {
     width: 30px;
     height: 30px;
     border: 1px solid black;
@@ -545,10 +538,7 @@ label {
     cursor: pointer;
 }
 
-.home-icon i,
-.login-icon i,
-.cart-icon i,
-.comments-icon i {
+.home-icon i, .login-icon i, .cart-icon i, .comments-icon i {
     font-size: 21px;
     position: absolute;
     top: 50%;
@@ -739,8 +729,7 @@ label {
     .last-viewed-mobile p {
         font-size: 16px;
     }
-    .last-viewed-mobile a,
-    .last-viewed-mobile a i {
+    .last-viewed-mobile a, .last-viewed-mobile a i {
         font-size: 20px;
     }
     div.book-card-grid:nth-child(2n - 1) {
@@ -786,8 +775,7 @@ label {
     .book-price-grid {
         font-size: 17px;
     }
-    .book-cart-grid,
-    .book-cart-grid i {
+    .book-cart-grid, .book-cart-grid i {
         font-size: 20px;
     }
     .bookmark-icon-wrapper-grid {
@@ -800,18 +788,12 @@ label {
     .mobile-icons {
         width: 300px;
     }
-    .home-icon,
-    .login-icon,
-    .cart-icon,
-    .comments-icon {
+    .home-icon, .login-icon, .cart-icon, .comments-icon {
         margin-left: 20px;
         width: 40px;
         height: 40px;
     }
-    .home-icon i,
-    .login-icon i,
-    .cart-icon i,
-    .comments-icon i {
+    .home-icon i, .login-icon i, .cart-icon i, .comments-icon i {
         font-size: 26px;
     }
     .info {
@@ -837,8 +819,7 @@ label {
         margin-top: 100px;
         font-size: 19px;
     }
-    .login-wrapper [type="text"],
-    [type="password"] {
+    .login-wrapper [type="text"], [type="password"] {
         padding: 3px;
         font-size: 15px;
     }
@@ -1250,9 +1231,7 @@ label {
     .book-card-list a {
         text-decoration: none;
     }
-    .book-title-list,
-    .book-author-list,
-    .book-description-list {
+    .book-title-list, .book-author-list, .book-description-list {
         float: left;
         width: 85%;
         text-align: center;
@@ -1336,10 +1315,12 @@ label {
         font-size: 1.2vw;
     }
     .last-viewed-comp a {
-        display: block;
+        position: aboslute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 96%;
         height: initial;
-        max-height: 70%;
         color: #ababaa;
         font-size: 1.6vw;
         line-height: calc(1.2vw + 1.2vh);
@@ -1524,8 +1505,7 @@ label {
         font-size: 2vw;
         margin-top: 0;
     }
-    .login-wrapper [type="text"],
-    [type="password"] {
+    .login-wrapper [type="text"], [type="password"] {
         padding: 0.3vw;
         font-size: 1.3vw;
     }
@@ -1562,8 +1542,7 @@ label {
     .mobile-icons {
         display: none;
     }
-    .info .close,
-    .comments .close {
+    .info .close, .comments .close {
         display: none;
     }
 }

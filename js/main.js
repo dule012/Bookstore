@@ -21,12 +21,12 @@ const apiBooks = 'https://www.googleapis.com/books/v1/volumes?q=with&printType=b
 fetch(apiBooks).then((data) => {
     return data.json()
 }).then((data) => {
+    displayCartCardsFromLocalStorage(JSON.parse(localStorage.getItem('cartCardsArr')))
     createBookGrid(booksArr(data))
     createBookList(booksArr(data))
     bookInfoDisplay()
     postCommentsBookstoore()
     openAndCloseMobileWrappers()
-    displayCartCardsFromLocalStorage(JSON.parse(localStorage.getItem('cartCardsArr')))
     sumOfPricesAndCreateCartCard()
     createBookmarkCardandDelete()
     bookmarkIconChangeColor()

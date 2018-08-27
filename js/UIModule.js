@@ -98,9 +98,6 @@ const openAndCloseMobileWrappers = () => {
             return 1 // zbog donjeg if-a jer vraca null == undefined => true i uvek i update-uje niz sto ne treba
         }
 
-        if (e.target.closest('.fa-shopping-cart') == clickedCart()) {
-            X = [...deleteCartCard]
-        }
 
         const clickedX = () => {
             for (let i = 0; i < X.length; i++) {
@@ -111,6 +108,9 @@ const openAndCloseMobileWrappers = () => {
             return 1 // zbog donjeg if-a jer vraca null != undefined => false i nece zatvarati cartWrapper klikom van njega 
         }
 
+        if (e.target.closest('.delete-cart-card') != clickedX()) {
+            X = [...deleteCartCard]
+        }
 
 
 
@@ -150,7 +150,6 @@ const openAndCloseMobileWrappers = () => {
             if (e.target.closest('.login-wrapper') != loginWrapper && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.cart') != cartComp && e.target.closest('.login') != loginComp) {
                 whichIsClicked = undefined
             }
-
             if (e.target.closest('.cart') != cartComp && e.target.closest('.cart-wrapper') != cartWrapper && e.target.closest('.delete-cart-card') != clickedX()) {
                 cartWrapper.style.display = 'none'
                 X = [...deleteCartCard] //da se update-uje niz
@@ -497,15 +496,15 @@ const sumOfPricesAndCreateCartCard = (e) => {
     const bookCardsImgGrid = document.querySelectorAll('.book-card-grid > img')
     const bookCardsImgList = document.querySelectorAll('.book-card-grid > img')
     const bookCardsImgAll = [...bookCardsImgGrid, ...bookCardsImgList]
-
+    
     const bookCardsPriceGrid = document.querySelectorAll('.book-price-grid')
     const bookCardsPriceList = document.querySelectorAll('.book-price-list')
     const bookCardsPriceAll = [...bookCardsPriceGrid, ...bookCardsPriceList]
-
+    
     const iX = document.getElementsByClassName('delete-cart-card')
-
+    
     // ako nema u localStorage-u cartCardsArr
-    let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr')) == null ? [] : JSON.parse(localStorage.getItem('cartCardsArr'))
+    let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr')) == null ? localStorage.setItem('cartCardsArr',JSON.stringify([])) : JSON.parse(localStorage.getItem('cartCardsArr'))
 
     for (let i = 0; i < carts.length; i++) {
 
@@ -519,10 +518,11 @@ const sumOfPricesAndCreateCartCard = (e) => {
 
                         total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[j].textContent)).toFixed(2)
                         totalComp.textContent = total.textContent
-
+                       
+                        localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                         localStorageArr[j].counter = cartCardCounter[j].textContent
                         localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
-
+                        console.log(localStorageArr, 'same', cartCardsTitle.length)
                         return
                     }
                 }
@@ -562,13 +562,14 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 totalComp.textContent = total.textContent
                 noOfBooks.textContent = cartCard.length
 
+                 localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                 localStorageArr.push({
                     title: bookCardsTitleAll[i].textContent,
                     img: bookCardsImgAll[i] == undefined ? '' : bookCardsImgAll[i].src,
                     counter: 1,
                     price: bookCardsPriceAll[i].textContent,
                 })
-
+                console.log(localStorageArr, 'new')
                 localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
                 //             Delete Cart Cards
                 iX[iX.length - 1].addEventListener('click', (e) => {
@@ -579,8 +580,10 @@ const sumOfPricesAndCreateCartCard = (e) => {
                             noOfBooks.textContent = parseFloat(noOfBooks.textContent) - 1
                             cartCard[k].remove()
 
+                            localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                             localStorageArr.splice(k, 1)
                             localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
+                            console.log(localStorageArr, ' removed 1')
                         }
                     }
                 })
@@ -1019,6 +1022,7 @@ const displayCartCardsFromLocalStorage = (arr) => {
                         let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
                         localStorageArr.splice(j, 1)
                         localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
+                        console.log(localStorageArr, ' removed 2')
                     }
                 }
             })
