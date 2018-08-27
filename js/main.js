@@ -12,7 +12,8 @@ import {
     bookmarkIconChangeColor,
     GridorListView,
     searchingBooks,
-    createLocalStorage
+    createLocalStorage,
+    displayCartCardsFromLocalStorage
 } from './UIModule.js'
 
 const apiBooks = 'https://www.googleapis.com/books/v1/volumes?q=with&printType=books&projection=full&maxResults=40'
@@ -25,6 +26,7 @@ fetch(apiBooks).then((data) => {
     bookInfoDisplay()
     postCommentsBookstoore()
     openAndCloseMobileWrappers()
+    displayCartCardsFromLocalStorage(JSON.parse(localStorage.getItem('cartCardsArr')))
     sumOfPricesAndCreateCartCard()
     createBookmarkCardandDelete()
     bookmarkIconChangeColor()

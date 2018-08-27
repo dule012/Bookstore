@@ -504,6 +504,9 @@ const sumOfPricesAndCreateCartCard = (e) => {
 
     const iX = document.getElementsByClassName('delete-cart-card')
 
+    // ako nema u localStorage-u cartCardsArr
+    let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr')) == null ? [] : JSON.parse(localStorage.getItem('cartCardsArr'))
+
     for (let i = 0; i < carts.length; i++) {
 
         (function (i) {
@@ -516,6 +519,10 @@ const sumOfPricesAndCreateCartCard = (e) => {
 
                         total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[j].textContent)).toFixed(2)
                         totalComp.textContent = total.textContent
+
+                        localStorageArr[j].counter = cartCardCounter[j].textContent
+                        localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
+
                         return
                     }
                 }
@@ -554,6 +561,15 @@ const sumOfPricesAndCreateCartCard = (e) => {
                 total.textContent = (parseFloat(total.textContent) + parseFloat(cartCardPrice[cartCardPrice.length - 1].textContent)).toFixed(2)
                 totalComp.textContent = total.textContent
                 noOfBooks.textContent = cartCard.length
+
+                localStorageArr.push({
+                    title: bookCardsTitleAll[i].textContent,
+                    img: bookCardsImgAll[i] == undefined ? '' : bookCardsImgAll[i].src,
+                    counter: 1,
+                    price: bookCardsPriceAll[i].textContent,
+                })
+
+                localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
                 //             Delete Cart Cards
                 iX[iX.length - 1].addEventListener('click', (e) => {
                     for (let k = 0; k < cartCard.length; k++) {
@@ -562,6 +578,9 @@ const sumOfPricesAndCreateCartCard = (e) => {
                             totalComp.textContent = total.textContent
                             noOfBooks.textContent = parseFloat(noOfBooks.textContent) - 1
                             cartCard[k].remove()
+
+                            localStorageArr.splice(k, 1)
+                            localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
                         }
                     }
                 })
@@ -610,7 +629,6 @@ const createBookmarkCardandDelete = () => {
                 let div = document.createElement('div')
                 div.setAttribute('class', 'bookmarks-card')
                 div.setAttribute('key', bookCardAll[a].getAttribute('key'))
-                console.log(div.getAttribute('key'))
 
                 let p1 = document.createElement('p')
                 p1.setAttribute('class', 'bookmarks-title')
@@ -930,6 +948,85 @@ const createLocalStorage = () => {
     }
 }
 
+const displayCartCardsFromLocalStorage = (arr) => {
+
+    const cartWrapper = document.querySelector('.cart-wrapper')
+    const noOfBooks = document.querySelector('.no-of-books > span')
+    const total = document.querySelector('.total > span')
+    const totalComp = document.querySelector('.i-total-comp > i')
+
+    const cartCards = document.getElementsByClassName('cart-card')
+    const deleteCartCard = document.getElementsByClassName('delete-cart-card')
+    const counter = document.getElementsByClassName('cart-card-counter')
+    const price = document.getElementsByClassName('cart-card-price')
+
+    if (arr == null) {
+        return
+    }
+
+    arr.forEach((el, j) => {
+        let div = document.createElement('div')
+        div.setAttribute('class', 'cart-card')
+
+        let img = document.createElement('img')
+        img.setAttribute('src', el.img)
+        div.append(img)
+
+        let p1 = document.createElement('p')
+        p1.setAttribute('class', 'cart-card-title')
+        let p1T = document.createTextNode(el.title)
+        p1.append(p1T)
+        div.append(p1)
+
+        let divDiv = document.createElement('div')
+        let p2 = document.createElement('p')
+        p2.setAttribute('class', 'cart-card-counter')
+        let p2T = document.createTextNode(el.counter)
+        p2.append(p2T)
+        divDiv.append(p2)
+
+        let p3 = document.createElement('p')
+        p3.setAttribute('class', 'cart-card-price')
+        let p3T = document.createTextNode(el.price)
+        p3.append(p3T)
+        divDiv.append(p3)
+
+        let i = document.createElement('i')
+        i.setAttribute('class', 'fa delete-cart-card')
+        i.innerHTML = '&#xf00d;'
+        divDiv.append(i)
+
+        div.append(divDiv)
+        cartWrapper.append(div)
+
+        total.textContent = (parseFloat(total.textContent) + (parseFloat(arr[j].counter) * parseFloat(arr[j].price))).toFixed(2)
+        totalComp.textContent = total.textContent
+    })
+    noOfBooks.textContent = arr.length
+
+    for (let i = 0; i < deleteCartCard.length; i++) {
+
+        (function (i) {
+
+            deleteCartCard[i].addEventListener('click', (e) => {
+                for (let j = 0; j < cartCards.length; j++) {
+                    if (e.target.closest('.cart-card') == cartCards[j]) {
+
+                        noOfBooks.textContent = parseFloat(noOfBooks.textContent) - 1
+                        total.textContent = Math.abs(parseFloat(total.textContent) - (parseFloat(counter[j].textContent) * parseFloat(price[j].textContent))).toFixed(2)
+                        totalComp.textContent = total.textContent
+                        cartCards[j].remove()
+                        let localStorageArr = JSON.parse(localStorage.getItem('cartCardsArr'))
+                        localStorageArr.splice(j, 1)
+                        localStorage.setItem('cartCardsArr', JSON.stringify(localStorageArr))
+                    }
+                }
+            })
+
+        })(i)
+
+    }
+}
 export {
     createBookGrid,
     createBookList,
@@ -942,5 +1039,5 @@ export {
     GridorListView,
     searchingBooks,
     createLocalStorage,
-
+    displayCartCardsFromLocalStorage
 }
