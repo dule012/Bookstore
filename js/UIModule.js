@@ -428,7 +428,7 @@ const postCommentsBookstoore = () => {
         CommentCard.setAttribute('class', 'comment-card')
 
         let CommentCardImg = document.createElement('img')
-        CommentCardImg.setAttribute('src', './user-icon.png')
+        CommentCardImg.setAttribute('src', './images/user-icon.png')
         CommentCardImg.setAttribute('alt', 'Comment Card Img')
         CommentCard.append(CommentCardImg)
 
